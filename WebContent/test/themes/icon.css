@@ -102,11 +102,11 @@
 .icon-mysearch{
     background:url('icons/mysearch.png') no-repeat center center;
 }
-.icon-book_borrow{
-    background:url('icons/book_borrow.png') no-repeat center center;
-}
 .icon-book_lend{
     background:url('icons/book_lend.png') no-repeat center center;
+}
+.icon-bookReturn{
+    background:url('icons/bookReturn.png') no-repeat center center;
 }
 .icon-rankingTop{
     background:url('icons/rankingTop.png') no-repeat center center;
@@ -116,4 +116,7 @@
 }
 .icon-user_edit{
     background:url('icons/user_edit.png') no-repeat center center;
+}
+.icon-down{
+    background:url('icons/down.png') no-repeat center center;
 }
