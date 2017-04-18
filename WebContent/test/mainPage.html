@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+    <head>
+        <title>主窗口</title>
+
+        <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+        <meta http-equiv="description" content="this is my page">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+        <link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="demo.css">
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.easyui.min.js"></script>
+
+    </head>
+
+    <body class="easyui-layout">
+        <!--头部，欢迎词放置 -->
+        <div id="north" region="north" style="width:100%;height:120px">
+            <h1 id="welcomeTitle" style="padding:0px;color:#2577E3;font-size:40px" align="center">欢迎登录图书馆系统</h1>
+        </div>
+        <!--菜单放置位置 -->
+        <div id="west"  region="west" title="操作菜单" style="width:300px">
+            <div id="crud" class="easyui-accordion"  data-options="multiple:'true'">
+                <!-- 图书信息管理部分，用来管理图书上下架，以及图书检索  -->
+                <div id="bookInfomationManage" title="图书信息管理">
+                    <a id="shangxiajia" class="easyui-linkbutton" iconCls="icon-book" style="display:block">图书管理</a>
+                    <a id="bookSeach"  class="easyui-linkbutton" iconCls="icon-mysearch" style="display:block">图书检索</a>
+                </div>
+                <!--图书借阅管理模块，用来控制借书和还书  -->
+                <div id="bookBorrowManage" title="图书借阅管理" style="">
+                    <a id="bookBorrow" class="easyui-linkbutton" iconCls="icon-book_borrow" style="display:block">图书归还</a>
+                    <a id="bookLend" class="easyui-linkbutton" iconCls="icon-book_lend" style="display:block">图书借阅</a>
+                </div>
+                <!-- 学生信息管理模块，用来添加以及更改学生信息  -->
+                <div id="studentInfomationManage" title="学生信息管理">
+                     <a id="bookBorrow" class="easyui-linkbutton" iconCls="icon-user_add" style="display:block">添加学生信息</a>
+                    <a id="bookLend" class="easyui-linkbutton" iconCls="icon-user_edit" style="display:block">修改学生信息</a> 
+                </div>
+                     
+                <div id="rankingTop" title="借阅排行查询">
+                     <a id="bookBorrow" class="easyui-linkbutton" iconCls="icon-rankingTop" style="display:block">最热图书</a>
+                    <a id="bookLend" class="easyui-linkbutton" iconCls="icon-rankingTop" style="display:block">学霸排行</a> 
+                </div>
+            </div>
+        </div>
+        <!-- 中心位置，用来展示菜单不同操作带来的变化 -->
+        <div id="center" region="center" title="核心窗口">
+            <iframe id="iframe" scrolling="no" src="#"></iframe>
+        </div>
+
+        <!-- 页面底部，若有必要，用来放置一些外部链接 -->
+        <div id="south" region="south" title="页面底部"
+        style="height:100px;width:100%"></div>
+    </body>
+</html>

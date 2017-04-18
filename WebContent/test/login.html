@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+    <head>
+        <title>基于easyUI的登录页面</title>
+
+        <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+        <meta http-equiv="description" content="this is my page">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+        <link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="demo.css">
+        <link rel="stylesheet" href="../css/login.css" type="text/css" >
+        <style type="text/css">  
+            #code  
+            {  
+                font-family:Arial;  
+                font-style:italic;  
+                font-weight:bold;  
+                border:0;  
+                letter-spacing:2px;  
+                color:blue;  
+            }  
+        </style>
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.easyui.min.js"></script>
+        <script type="text/javascript" src="login_check.js"></script>
+    </head>
+
+    <body>
+        <div id="baseBackground">
+            <form action="#" method="post" accept-charset="utf-8">
+                用户名：<input type="text" name="userName" id="userName"/>
+                <br/>
+                <br/>
+                密&nbsp;&nbsp;&nbsp;码：<input type="password" name="pwd" value="" id="pwd"/>
+                <br/>
+                <br/>
+               验证码： <input type="text" class = "easyui-textbox" name="yzm" value="" id="yzm"/>
+                &nbsp;
+                <input type="button" name="code" id="code"/>
+                <br/>
+                <br/>
+                <a id="submit">登录</a>
+                <a id="reset">重置</a>
+            </form>
+        </div>
+    </body>
+</html>
