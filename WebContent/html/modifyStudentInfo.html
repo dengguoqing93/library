@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>修改学生信息</title>
+<link rel="stylesheet" type="text/css" href="/library/css/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/library/css/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="/library/css/demo.css">
+<script type="text/javascript" src="/library/js/jquery.min.js"></script>
+<script type="text/javascript" src="/library/js/jquery.easyui.min.js"></script>
+</head>
+<body>
+<!-- 设置数据表格的样式，以及相关的函数调用 -->
+
+<div id="modifyStudentInfo">
+	<table id="studentInfo" class="easyui-datagrid" title="学生信息表"
+	toolbar="#tb" pagination = "true" rownumbers="true">
+		<thead>
+			<tr>
+				<th data-options = "field:'studentno'">学号</th>
+				<th data-options = "field:'studentname'">姓名</th>
+			</tr> 
+		</thead>
+		<tbody>
+			<tr>
+			<td>11201020105</td>
+			<td>邓国庆</td>
+			</tr>
+			<tr>
+			<td>11201020106</td>
+			<td>李浩</td>
+			</tr>
+			<tr>
+			<td>11201020107</td>
+			<td>张文宇</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<!-- 表头工具 -->
+<div id="tb" style="padding:5px;height:auto">
+	<div style="margin-bottom:5px">
+		<label>学号：</label>
+		<input type="text" class="easyui-numberbox" id="studentno" name="studentno">
+		<a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+	</div>
+	<div>
+		Date From: <input class="easyui-datebox" style="width:80px">
+		To: <input class="easyui-datebox" style="width:80px">
+		Language: 
+		<input class="easyui-combobox" style="width:100px"
+				url="data/combobox_data.json"
+				valueField="id" textField="text">
+		<a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+	</div>
+</div>
+</body>
+</html>

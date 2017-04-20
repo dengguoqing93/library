@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>添加学生信息</title>
+<link rel="stylesheet" type="text/css" href="/library/css/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/library/css/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="/library/css/demo.css">
+<style type="text/css">
+	label {
+		font-size: x-large;
+		color: orange;
+	}
+	input {
+		height: 25px;
+	}
+	.myButton {
+	height:35px;
+	background:#A7CFAC;
+	color:#FF545A;
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+	
+	.myButton:active {
+		position: relative;
+		top: 1px;
+	}
+	
+</style>
+<script type="text/javascript" src="/library/js/jquery.min.js"></script>
+<script type="text/javascript" src="/library/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/library/js/validateRule.js"></script>
+</head>
+<body style="height: 600px">
+	
+	<div id="studentInfo"  style="height: 600px;border: 1px solid red;text-align: center;">
+	<h1 style="color: orange; padding: 20px">添加学生信息</h1>
+		<form action="" method="psot">
+			<label>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label><input type="text" id="studentno" name="studentno">
+			<!-- 设置学号的样式 -->
+			<script type="text/javascript">
+				/* 设置学号为数字输入框 */
+				$("#studentno").numberbox({
+					required:true,
+					missingMessage:'请输入学号',
+					prompt:'请输入学号',
+					/*学号长度的验证 */
+					validType:'length[11,11]',
+					invalidMessage:'学号格式不正确'
+				});
+			</script>
+			<br /><br />
+			 <label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" id="studentname" name="studentname">
+			 <!-- 验证输入的姓名非空，且全部是汉字 -->
+			 <script type="text/javascript">
+				$("#studentname").textbox({
+					required:true,
+					missingMessage:'请输入姓名',
+					prompt:'请输入姓名',
+					/*学号长度的验证 */
+					validType:['CHS','length[2,6]'],
+					invalidMessage:'请输入正确的姓名格式'
+				});
+			</script>
+			 <br /><br />
+			<label>联系方式：</label><input type="text"  name="studentphone" id="studentphone">
+			<script type="text/javascript">
+				$("#studentphone").numberbox({
+					required:true,
+					missingMessage:'请输入手机号码',
+					prompt:'请输入手机号码',
+					validType:'mobile'
+				});
+			</script>
+			<br /><br />
+			<label>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label><input type="radio" name="studentsex" checked="checked" value="0">
+			<label>男&nbsp;</label><img alt="图片有误" src="/library/img/user_male.png">&nbsp;&nbsp;
+			<input type="radio" name="studentsex" value="1">
+			 <label>女</label><img alt="图片有误" src="/library/img/user_female.png">
+			 <br /><br /> 
+			<label>院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系：</label><input type="text" id="departmentname" name="departmentname">
+			<!-- 设置院系：
+				院系依赖于学号.因此，设置为只读字段
+			-->
+			 <script type="text/javascript">
+				
+				$("#departmentname").textbox({
+					readonly:true
+				});
+			</script>
+			<br /><br />
+			 <label>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label><input type="text" id="professionname" name="professionname"> 
+			 <!-- 设置专业:
+			 	专业依赖于学号.因此，设置为只读字段
+			 -->
+			 <script type="text/javascript">
+				$("#professionname").textbox({
+					readonly:true
+				});
+			</script>
+			 <br /><br />
+			 <label>班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：</label><input type="text" id="classes" name="classes"> 
+			 <!--  设置班级：
+			 	班级依赖于学号.因此，设置为只读字段
+			 -->
+			 <script type="text/javascript">
+				$("#classes").textbox({
+					readonly:true
+				});
+			</script>
+			 <br /><br />
+			<input type="submit" value="提交" class="myButton"/>&nbsp;&nbsp;&nbsp;
+			<input type="reset" value="重置" class="myButton">
+		</form>
+	</div>
+</body>
+</html>
