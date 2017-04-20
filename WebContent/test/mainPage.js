@@ -30,7 +30,7 @@ $(function() {
      * 添加学生事件绑定
      */
     $("#addStudentInfo").bind('click', function() {
-        addTab($(this).text(), 'bookPutaway01.jsp');
+        addTab($(this).text(), 'addStudentInfo.html');
     });
     /*
      * 修改学生信息事件绑定

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
 <html>
     <head>
-        <title>主窗口</title>
+        <title>图书馆管理系统</title>
 
         <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
         <meta http-equiv="description" content="this is my page">
@@ -18,37 +18,38 @@
     <body class="easyui-layout">
         <!--头部，欢迎词放置 -->
         <div id="north" region="north" style="width:100%;height:120px">
-            <h1 id="welcomeTitle" style="padding:0px;color:#2577E3;font-size:40px" align="center">欢迎登录图书馆系统</h1>
+            <h1 id="welcomeTitle" style="padding:0px;color:#2577E3;font-size:40px"
+             align="center">欢迎登录图书馆系统</h1>
         </div>
         <!--菜单放置位置 -->
         <div id="west"  region="west" title="操作菜单" style="width:300px">
             <div id="crud" class="easyui-accordion"  data-options="multiple:'true'">
                 <!-- 图书信息管理部分，用来管理图书上下架，以及图书检索  -->
                 <div id="bookInfomationManage" title="图书信息管理">
-                    <a id="shangxiajia" class="easyui-linkbutton"
+                    <a id="shangxiajia" href="javascript:void(0)" class="easyui-linkbutton"
                      iconCls="icon-book" style="display:block" >图书管理</a>
-                    <a id="bookSeach"  class="easyui-linkbutton" 
+                    <a id="bookSeach" href="javascript:void(0)" class="easyui-linkbutton" 
                     iconCls="icon-mysearch" style="display:block">图书检索</a>
                 </div>
                 <!--图书借阅管理模块，用来控制借书和还书  -->
-                <div id="bookBorrowManage" title="图书借阅管理" style="">
-                    <a id="bookReturn" class="easyui-linkbutton"
+                <div id="bookBorrowManage" title="图书借阅管理" >
+                    <a id="bookReturn" href="javascript:void(0)" class="easyui-linkbutton"
                      iconCls="icon-bookReturn" style="display:block">图书归还</a>
-                    <a id="bookLend" class="easyui-linkbutton"
+                    <a id="bookLend" href="javascript:void(0)" class="easyui-linkbutton"
                      iconCls="icon-book_lend" style="display:block">图书借阅</a>
                 </div>
                 <!-- 学生信息管理模块，用来添加以及更改学生信息  -->
-                <div id="studentInfomationManage" title="学生信息管理">
-                     <a id="addStudentInfo" class="easyui-linkbutton" 
+                <div id="studentInfomationManage" title="学生信息管理" data-options="selected:true">
+                     <a id="addStudentInfo" href="javascript:void(0)" class="easyui-linkbutton" 
                      iconCls="icon-user_add" style="display:block">添加学生信息</a>
-                    <a id="modifyStudentInfo" class="easyui-linkbutton" 
+                    <a id="modifyStudentInfo" href="javascript:void(0)" class="easyui-linkbutton" 
                     iconCls="icon-user_edit" style="display:block">修改学生信息</a> 
                 </div>
                      
                 <div id="rankingTop" title="借阅排行查询">
-                     <a id="hotBook" class="easyui-linkbutton" 
+                     <a id="hotBook" href="javascript:void(0)" class="easyui-linkbutton" 
                      iconCls="icon-rankingTop" style="display:block">最热图书</a>
-                    <a id="studentOfRanking" class="easyui-linkbutton" 
+                    <a id="studentOfRanking" href="javascript:void(0)" class="easyui-linkbutton" 
                     iconCls="icon-rankingTop" style="display:block">学霸排行</a> 
                 </div>
             </div>
@@ -57,22 +58,6 @@
         <div id="center" region="center" class="easyui-tabs">
             <div id="home" title="Home"></div>
         </div>
-		<div id="mm" class="easyui-menu" style="width: 120px;">
-			<div>New</div>
-			<div>
-				<span>Open</span>
-				<div style="width: 150px;">
-					<div>
-						<b>Word</b>
-					</div>
-					<div>Excel</div>
-					<div>PowerPoint</div>
-				</div>
-			</div>
-			<div data-options="iconCls:'icon-save'">Save</div>
-			<div class="menu-sep"></div>
-			<div>Exit</div>
-		</div>
 	<!-- 页面底部，若有必要，用来放置一些外部链接 -->
         <div id="south" region="south" title="页面底部"
         style="height:100px;width:100%"></div>
