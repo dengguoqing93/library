@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>添加学生信息</title>
-<link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="themes/icon.css">
-<link rel="stylesheet" type="text/css" href="demo.css">
+<link rel="stylesheet" type="text/css" href="/library/css/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/library/css/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="/library/css/demo.css">
 <style type="text/css">
 	label {
 		font-size: x-large;
@@ -40,13 +40,13 @@
 	}
 	
 </style>
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="jquery.easyui.min.js"></script>
-<script type="text/javascript" src="validateRule.js"></script>
+<script type="text/javascript" src="/library/js/jquery.min.js"></script>
+<script type="text/javascript" src="/library/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/library/js/validateRule.js"></script>
 </head>
 <body style="height: 600px">
 	
-	<div id="studentInfo" align="center" style="height: 600px;border: 1px solid red;">
+	<div id="studentInfo"  style="height: 600px;border: 1px solid red;text-align: center;">
 	<h1 style="color: orange; padding: 20px">添加学生信息</h1>
 		<form action="" method="psot">
 			<label>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label><input type="text" id="studentno" name="studentno">
@@ -71,7 +71,7 @@
 					missingMessage:'请输入姓名',
 					prompt:'请输入姓名',
 					/*学号长度的验证 */
-					validType:['CHS','length[2,10]'],
+					validType:['CHS','length[2,6]'],
 					invalidMessage:'请输入正确的姓名格式'
 				});
 			</script>
@@ -80,16 +80,16 @@
 			<script type="text/javascript">
 				$("#studentphone").numberbox({
 					required:true,
-					missingMessage:'手机号码还没有输入',
+					missingMessage:'请输入手机号码',
 					prompt:'请输入手机号码',
 					validType:'mobile'
 				});
 			</script>
 			<br /><br />
 			<label>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label><input type="radio" name="studentsex" checked="checked" value="0">
-			<label>男&nbsp;</label><img alt="图片有误" src="img/user_male.png">&nbsp;&nbsp;
+			<label>男&nbsp;</label><img alt="图片有误" src="/library/img/user_male.png">&nbsp;&nbsp;
 			<input type="radio" name="studentsex" value="1">
-			 <label>女</label><img alt="图片有误" src="img/user_female.png">
+			 <label>女</label><img alt="图片有误" src="/library/img/user_female.png">
 			 <br /><br /> 
 			<label>院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系：</label><input type="text" id="departmentname" name="departmentname">
 			<!-- 设置院系：

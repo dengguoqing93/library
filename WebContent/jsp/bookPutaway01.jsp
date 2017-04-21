@@ -20,11 +20,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	
-	<link rel="stylesheet" type="text/css" href="<%=path %>/test/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="<%=path %>/test/themes/icon.css">
-	<link rel="stylesheet" type="text/css" href="<%=path %>/test/loginTest.css">
-	<script type="text/javascript" src="<%=path %>/test/jquery.min.js"></script>
-	<script type="text/javascript" src="<%=path %>/test/jquery.easyui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<%=path %>/css/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/css/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/css/demo.css">
+	<script type="text/javascript" src="<%=path %>/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=path %>/js/jquery.easyui.min.js"></script>
 	
   	<script type="text/javascript" src="<%=path %>/js/bookPutaway.js"></script>
   	<style>
