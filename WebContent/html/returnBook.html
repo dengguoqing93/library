@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>图书归还</title>
+<link rel="stylesheet" type="text/css" href="/library/css/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/library/css/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="/library/css/demo.css">
+<script type="text/javascript" src="/library/js/jquery.min.js"></script>
+<script type="text/javascript" src="/library/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="http://www.w3cschool.cc/try/jeasyui/datagrid-detailview.js"></script>
+
+</head>
+<body>
+<!-- 设置数据表格的样式，以及相关的函数调用 -->
+<div id="modifyStudentInfo">
+	<table id="studentInfo" class="easyui-datagrid" title="图书归还" singleSelect ="true" toolbar="#tb">
+		<thead>
+			<tr>
+				<th data-options = "field:'studentno',align:'center',width:120">学号</th>
+				<th data-options = "field:'studentname',aligen:'center',width:120">姓名</th>
+				<th data-options = "field:'departmentname',aligen:'center',width:120">院系</th>
+				<th data-options = "field:'professionname',aligen:'center',width:120">专业</th>
+				<th data-options = "field:'borrowquantities',aligen:'center',width:120">借阅数量</th>
+				<th data-options = "field:'borrowquantities',aligen:'center',width:120">应交罚金</th>
+			</tr> 
+		</thead>
+		<tbody>
+			<tr>
+				<td >学号</td>
+				<td >姓名</td>
+				<td >院系</td>
+				<td >专业</td>
+				<td >借阅数量</td>
+				<td >应交罚金</td>
+			</tr> 
+		</tbody>
+	</table>
+	<!-- 添加子网格 ,用来展示已经借的图书信息-->
+	<script type="text/javascript">
+	$('#studentInfo').datagrid({
+		rownumbers:true,
+		view: detailview,
+		detailFormatter:function(index,row){
+			return '<div style="padding:2px"><table class="ddv"></table></div>';
+		},
+		onExpandRow: function(index,row){
+			var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
+			ddv.datagrid({
+				url:'html/bookData.json',
+				fitColumns:true,
+				singleSelect:false,
+				rownumbers:true,
+				loadMsg:'',
+				height:'auto',
+				columns:[[
+					{field:'bookno',title:'图书编号',width:100},
+					{field:'bookname',title:'图书名称',width:100},
+					{field:'author',title:'图书作者',width:100},
+					{field:'borroweddate',title:'借阅日期',width:100},
+					{field:'shouldreturndate',title:'应还日期',width:100}
+				]],
+				onResize:function(){
+					$('#studentInfo').datagrid('fixDetailRowHeight',index);
+				},
+				onLoadSuccess:function(){
+					setTimeout(function(){
+						$('#studentInfo').datagrid('fixDetailRowHeight',index);
+					},0);
+				}
+			});
+			$('#studentInfo').datagrid('fixDetailRowHeight',index);
+		}
+	});
+	</script>
+</div>
+
+
+<!-- 表头工具 -->
+<div id="tb" style="padding:5px;height:auto">
+	<div style="margin-bottom:5px">
+		<label>学号：</label>
+		<input type="text" class="easyui-numberbox" id="studentno" name="studentno" data-options="prompt:'请输入学号'">
+		<a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-accept">确认还书</a>
+	</div>
+</div>
+</body>
+</html>

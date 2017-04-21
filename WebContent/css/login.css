@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+/*
+ * 底色样式
+ */
+div{
+    background: url('../img/login.jpg') no-repeat;
+    background-size: 1200px 600px;
+    width: 1200px;
+    height: 600px;
+    position: relative;
+    left: 300px;
+    top: 100px;
+}
+/**
+ * 表单样式
+ */
+form{
+    position: relative;
+    left: 750px;
+    top:150px;
+}
+/*
+ * 错误提示样式
+ */
+.errorsMsg{
+    color: red;
+}
