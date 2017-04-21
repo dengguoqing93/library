@@ -24,17 +24,24 @@ $(function() {
         iconCls : 'icon-reload'
     });
     $("#reset").bind('click', function() {
-        $("#userName").textbox('reset');
-        $("#pwd").textbox('reset');
+        //$("#userName").textbox('reset');
+        //$("#pwd").textbox('reset');
+        $("#user").form("reset");
     });
     
     $('#submit').bind('click', function() {
         if (validateNotNull) {
             alert("请输入用户名、密码、验证码");
         } else {
+            /*
             $.post('', {
-                "userName" : userName,
-                "pwd" : pwd
+                            "userName" : userName,
+                            "pwd" : pwd
+                        });*/
+            $("#user").form({
+                success:function(data){
+                    
+                }
             });
         }
     });

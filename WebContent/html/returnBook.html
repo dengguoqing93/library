@@ -50,12 +50,12 @@
 			ddv.datagrid({
 				url:'bookdata.json',
 				method:'get',
-				singleSelect:true,
 				fitColumns:true,
 				rownumbers:true,
 				loadMsg:'',
 				height:'auto',
 				columns:[[
+					{field:'cx',checkbox:true}, 
 					{field:'bookno',title:'图书编号',width:100,align:'center'},
 					{field:'bookname',title:'图书名称',width:100},
 					{field:'author',title:'图书作者',width:100},
