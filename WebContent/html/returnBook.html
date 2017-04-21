@@ -14,7 +14,8 @@
 <body>
 <!-- 设置数据表格的样式，以及相关的函数调用 -->
 <div id="modifyStudentInfo">
-	<table id="studentInfo" class="easyui-datagrid" title="图书归还" singleSelect ="true" toolbar="#tb">
+	<table id="studentInfo" class="easyui-datagrid" title="图书归还" 
+		 toolbar="#tb" style="height: 400px;">
 		<thead>
 			<tr>
 				<th data-options = "field:'studentno',align:'center',width:120">学号</th>
@@ -47,18 +48,19 @@
 		onExpandRow: function(index,row){
 			var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
 			ddv.datagrid({
-				url:'html/bookData.json',
+				url:'bookdata.json',
+				method:'get',
+				singleSelect:true,
 				fitColumns:true,
-				singleSelect:false,
 				rownumbers:true,
 				loadMsg:'',
 				height:'auto',
 				columns:[[
-					{field:'bookno',title:'图书编号',width:100},
+					{field:'bookno',title:'图书编号',width:100,align:'center'},
 					{field:'bookname',title:'图书名称',width:100},
 					{field:'author',title:'图书作者',width:100},
 					{field:'borroweddate',title:'借阅日期',width:100},
-					{field:'shouldreturndate',title:'应还日期',width:100}
+					{field:'shouldreturndate',title:'应还日期',width:100} 
 				]],
 				onResize:function(){
 					$('#studentInfo').datagrid('fixDetailRowHeight',index);

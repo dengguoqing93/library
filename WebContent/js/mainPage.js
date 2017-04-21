@@ -3,7 +3,7 @@
  */
 $(function() {
     /*
-     绑定图书上架事件
+     * 绑定图书上架事件
      */
     $("#shangxiajia").bind('click', function() {
         addTab($(this).text(), '/library/jsp/bookPutaway01.jsp');
@@ -18,13 +18,13 @@ $(function() {
      * 还书事件绑定
      */
     $("#bookReturn").bind('click', function() {
-        addTab($(this).text(), '/library/jsp/bookPutaway01.jsp');
+        addTab($(this).text(), '/library/html/returnBook.html');
     });
     /*
      * 借书事件绑定
      */
     $("#bookLend").bind('click', function() {
-        addTab($(this).text(), '/library/jsp/bookPutaway01.jsp');
+        addTab($(this).text(), '/library/html/loanBook.html');
     });
     /*
      * 添加学生事件绑定
