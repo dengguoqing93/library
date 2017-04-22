@@ -1,0 +1,35 @@
+1、通过以下语句可以将一组数据已json对象的方式传递到后台controller层
+	$.ajax({		
+				 type: "POST",
+			     url: "<%=path%>/getJson",
+			     contentType: "application/json", //必须有
+			     dataType: "json", //表示返回值类型，不必须
+			     data: JSON.stringify({ 'username': username}),  //相当于 //data: "{'str1':'foovalue', 'str2':'barvalue'}",
+			     success: function (jsonResult) {
+			      alert(jsonResult);
+			      }
+			}
+			);
+	1.1、 contentType: "application/json"：这一条必须写，表明request的数据类型是json。 发送信息至服务器时内容编码类型。
+	1.2、dataType: "json", //表示返回值类型，不必须（jQuery可以智能判断数据类型）
+	1.3、  data: JSON.stringify({ 'username': username}),  //相当于 //data: "{'str1':'foovalue', 'str2':'barvalue'}",
+	将数据包装成json对象的两种方法
+2、后台接受的方法：
+	@RequestMapping(value="getJson",produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String getJson(@RequestBody JSONObject jsonObject) {
+        UserAccount uc02 = JSONObject.toJavaObject(jsonObject, UserAccount.class);
+        System.out.println(uc02.getUsername());
+        UserAccount uc = new UserAccount();
+        uc.setUserid((long) 15);
+        uc.setUsername("邓国庆");
+        uc.setUserpwd("123456");
+        String jsonString = JSON.toJSONString(uc);
+        return jsonString;
+    }
+    2.1、方法中参数要声明为@RequestBody且类型为JSONObject，用来接受json对象。（JSONObject继承自JSON）
+    2.2、将json对象转化为java中的普通对象方法
+    	1、JSONObject.toJavaObject(jsonObject, UserAccount.class);
+    		第一个参数表示，json对象，第二参数为要转化为对象的class解析
+    	2、
+	
