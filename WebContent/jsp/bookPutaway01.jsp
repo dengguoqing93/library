@@ -67,7 +67,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<th data-options="field:'classes',width:200,align:'center'">类别</th>
 					<th data-options="field:'chubanshe',width:200,align:'center'">出版社</th>
 					<th data-options="field:'years',width:200,align:'center'">出版年份</th>
-					
 					<th data-options="field:'count',width:148,align:'center'">数量</th>
 					
 				</tr>

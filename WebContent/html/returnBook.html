@@ -49,19 +49,25 @@
 			var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
 			ddv.datagrid({
 				url:'bookdata.json',
-				method:'get',
+				method:'post',
 				fitColumns:true,
 				rownumbers:true,
 				loadMsg:'',
 				height:'auto',
 				columns:[[
-					{field:'cx',checkbox:true}, 
+				/* 	{field:'cx',checkbox:true}, 
+					{field:'productid',title:'图书编号',width:100,align:'center'},
+					{field:'productname',title:'图书名称',width:100},
+					{field:'unitcost',title:'图书作者',width:100},
+					{field:'status',title:'借阅日期',width:100},
+					{field:'listprice',title:'应还日期',width:100}
+ */					{field:'cx',checkbox:true}, 
 					{field:'bookno',title:'图书编号',width:100,align:'center'},
 					{field:'bookname',title:'图书名称',width:100},
 					{field:'author',title:'图书作者',width:100},
 					{field:'borroweddate',title:'借阅日期',width:100},
 					{field:'shouldreturndate',title:'应还日期',width:100} 
-				]],
+				]], 
 				onResize:function(){
 					$('#studentInfo').datagrid('fixDetailRowHeight',index);
 				},
