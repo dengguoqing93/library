@@ -31,4 +31,19 @@ function appendBookRow () {
 	);
 }
 
+/*
+ * 点击确认借阅，弹出学生信息
+ */
+function borrowInfo () {
+  $("#studentWin").window('open');
+}
 
+/*
+ * 学生信息窗口的确认借阅函数
+ */
+
+function confirmBorrow () {
+  var borrowCount = $('#borrowCount').val();
+  if(borrowCount < )
+  var studentNo = $('#studentno').val();
+}

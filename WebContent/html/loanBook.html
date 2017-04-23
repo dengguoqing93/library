@@ -32,9 +32,66 @@
 		<label>图书编号：</label>
 		<input type="text" class="easyui-numberbox" id="bookno"  name="bookno" data-options="prompt:'请输入图书编号'">
 		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" onclick="appendBookRow ()">添加</a>&nbsp;&nbsp;&nbsp;
-		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add">刪除</a>&nbsp;&nbsp;&nbsp;
-		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-accept">确认借阅</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-remove">刪除</a>&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-accept" onclick="borrowInfo()">确认借阅</a>
 		</div>
 	</div>
+	
+	<div id="studentWin">
+		<div id="studentInfo"style="padding-top: 20px;padding-left:100px; ">
+			<label>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label><input
+				type="text" id="studentno" name="studentno">
+			<!-- 设置学号的样式 -->
+			<script type="text/javascript">
+				/* 设置学号为数字输入框 */
+				$("#studentno").numberbox({
+					required : true,
+					missingMessage : '请输入学号',
+					prompt : '请输入学号',
+					/*学号长度的验证 */
+					validType : 'length[10,10]',
+					invalidMessage : '学号格式不正确'
+				});
+			</script>
+			<br />
+			<br /> <label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input
+				type="text" id="studentname" name="studentname">
+			<!-- 验证输入的姓名非空，且全部是汉字 -->
+			<script type="text/javascript">
+				$("#studentname").textbox({
+					readonly : true
+				});
+			</script>
+			<br />
+			<br /> <label>已借数量：</label><input readonly="readonly"
+				id="borrewodCount">
+			<script type="text/javascript">
+				$("#borrowedCount").numberbox()
+			</script>
+			<br>
+			<br> <label>可借数量：</label><input readonly="readonly"
+				id="borrowCount"><br><br>
+			<script type="text/javascript">
+				$("#borrowCount").numberbox()
+			</script>
+			<!-- 确认借阅事件绑定 -->
+			<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-accept">确认借阅</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<!-- 取消借阅事件绑定 -->
+			<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-cancel">取消借阅</a>
+		</div>
+	</div>
+	<!-- 学生信息展示窗口的设置 -->
+	<script type="text/javascript">
+		/* 学生信息的设置 */
+		$('#studentWin').window({
+			title:'学生信息',
+			width:600,    
+		    height:400,    
+		});
+		$('#studentWin').window('close');
+	</script>
+
+
 </body>
 </html>
