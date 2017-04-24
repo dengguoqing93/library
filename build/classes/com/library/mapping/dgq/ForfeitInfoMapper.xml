@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.dgq.ForfeitInfoMapper">
+  <resultMap id="BaseResultMap" type="com.library.pojo.dgq.ForfeitInfo">
+    <id column="FORFEITID" jdbcType="DECIMAL" property="forfeitid" />
+    <result column="BOOKID" jdbcType="DECIMAL" property="bookid" />
+    <result column="STUDENTNO" jdbcType="DECIMAL" property="studentno" />
+    <result column="FORFEITDATE" jdbcType="TIMESTAMP" property="forfeitdate" />
+    <result column="FORFEITMONERY" jdbcType="DECIMAL" property="forfeitmonery" />
+    <result column="ACTUALMONEY" jdbcType="DECIMAL" property="actualmoney" />
+    <result column="COMM" jdbcType="VARCHAR" property="comm" />
+    <result column="DEF01" jdbcType="VARCHAR" property="def01" />
+    <result column="DEF02" jdbcType="VARCHAR" property="def02" />
+    <result column="DEF03" jdbcType="VARCHAR" property="def03" />
+    <result column="DEF04" jdbcType="VARCHAR" property="def04" />
+    <result column="DEF05" jdbcType="VARCHAR" property="def05" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    FORFEITID, BOOKID, STUDENTNO, FORFEITDATE, FORFEITMONERY, ACTUALMONEY, COMM, DEF01, 
+    DEF02, DEF03, DEF04, DEF05
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DGQ.FORFEITINFO
+    where FORFEITID = #{forfeitid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from DGQ.FORFEITINFO
+    where FORFEITID = #{forfeitid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.library.pojo.dgq.ForfeitInfo">
+    insert into DGQ.FORFEITINFO (FORFEITID, BOOKID, STUDENTNO, 
+      FORFEITDATE, FORFEITMONERY, ACTUALMONEY, 
+      COMM, DEF01, DEF02, 
+      DEF03, DEF04, DEF05
+      )
+    values (#{forfeitid,jdbcType=DECIMAL}, #{bookid,jdbcType=DECIMAL}, #{studentno,jdbcType=DECIMAL}, 
+      #{forfeitdate,jdbcType=TIMESTAMP}, #{forfeitmonery,jdbcType=DECIMAL}, #{actualmoney,jdbcType=DECIMAL}, 
+      #{comm,jdbcType=VARCHAR}, #{def01,jdbcType=VARCHAR}, #{def02,jdbcType=VARCHAR}, 
+      #{def03,jdbcType=VARCHAR}, #{def04,jdbcType=VARCHAR}, #{def05,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.library.pojo.dgq.ForfeitInfo">
+    insert into DGQ.FORFEITINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="forfeitid != null">
+        FORFEITID,
+      </if>
+      <if test="bookid != null">
+        BOOKID,
+      </if>
+      <if test="studentno != null">
+        STUDENTNO,
+      </if>
+      <if test="forfeitdate != null">
+        FORFEITDATE,
+      </if>
+      <if test="forfeitmonery != null">
+        FORFEITMONERY,
+      </if>
+      <if test="actualmoney != null">
+        ACTUALMONEY,
+      </if>
+      <if test="comm != null">
+        COMM,
+      </if>
+      <if test="def01 != null">
+        DEF01,
+      </if>
+      <if test="def02 != null">
+        DEF02,
+      </if>
+      <if test="def03 != null">
+        DEF03,
+      </if>
+      <if test="def04 != null">
+        DEF04,
+      </if>
+      <if test="def05 != null">
+        DEF05,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="forfeitid != null">
+        #{forfeitid,jdbcType=DECIMAL},
+      </if>
+      <if test="bookid != null">
+        #{bookid,jdbcType=DECIMAL},
+      </if>
+      <if test="studentno != null">
+        #{studentno,jdbcType=DECIMAL},
+      </if>
+      <if test="forfeitdate != null">
+        #{forfeitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forfeitmonery != null">
+        #{forfeitmonery,jdbcType=DECIMAL},
+      </if>
+      <if test="actualmoney != null">
+        #{actualmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="comm != null">
+        #{comm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        #{def05,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.library.pojo.dgq.ForfeitInfo">
+    update DGQ.FORFEITINFO
+    <set>
+      <if test="bookid != null">
+        BOOKID = #{bookid,jdbcType=DECIMAL},
+      </if>
+      <if test="studentno != null">
+        STUDENTNO = #{studentno,jdbcType=DECIMAL},
+      </if>
+      <if test="forfeitdate != null">
+        FORFEITDATE = #{forfeitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forfeitmonery != null">
+        FORFEITMONERY = #{forfeitmonery,jdbcType=DECIMAL},
+      </if>
+      <if test="actualmoney != null">
+        ACTUALMONEY = #{actualmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="comm != null">
+        COMM = #{comm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        DEF01 = #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        DEF02 = #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        DEF03 = #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        DEF04 = #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        DEF05 = #{def05,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FORFEITID = #{forfeitid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.library.pojo.dgq.ForfeitInfo">
+    update DGQ.FORFEITINFO
+    set BOOKID = #{bookid,jdbcType=DECIMAL},
+      STUDENTNO = #{studentno,jdbcType=DECIMAL},
+      FORFEITDATE = #{forfeitdate,jdbcType=TIMESTAMP},
+      FORFEITMONERY = #{forfeitmonery,jdbcType=DECIMAL},
+      ACTUALMONEY = #{actualmoney,jdbcType=DECIMAL},
+      COMM = #{comm,jdbcType=VARCHAR},
+      DEF01 = #{def01,jdbcType=VARCHAR},
+      DEF02 = #{def02,jdbcType=VARCHAR},
+      DEF03 = #{def03,jdbcType=VARCHAR},
+      DEF04 = #{def04,jdbcType=VARCHAR},
+      DEF05 = #{def05,jdbcType=VARCHAR}
+    where FORFEITID = #{forfeitid,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -16,12 +16,7 @@ div{
  */
 form{
     position: relative;
-    left: 750px;
+    left: 780px;
     top:150px;
 }
-/*
- * 错误提示样式
- */
-.errorsMsg{
-    color: red;
-}
+

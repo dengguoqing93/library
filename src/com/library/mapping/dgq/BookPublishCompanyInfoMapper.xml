@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.dgq.BookPublishCompanyInfoMapper">
+  <resultMap id="BaseResultMap" type="com.library.pojo.dgq.BookPublishCompanyInfo">
+    <id column="PUBLISHCOMPANYID" jdbcType="DECIMAL" property="publishcompanyid" />
+    <result column="PUBLISHCOMPANYABBR" jdbcType="VARCHAR" property="publishcompanyabbr" />
+    <result column="PUBLISHCOMPANYNAME" jdbcType="VARCHAR" property="publishcompanyname" />
+    <result column="PUBLISHCOMPANYCOMM" jdbcType="VARCHAR" property="publishcompanycomm" />
+    <result column="DEF01" jdbcType="VARCHAR" property="def01" />
+    <result column="DEF02" jdbcType="VARCHAR" property="def02" />
+    <result column="DEF03" jdbcType="VARCHAR" property="def03" />
+    <result column="DEF04" jdbcType="VARCHAR" property="def04" />
+    <result column="DEF05" jdbcType="VARCHAR" property="def05" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PUBLISHCOMPANYID, PUBLISHCOMPANYABBR, PUBLISHCOMPANYNAME, PUBLISHCOMPANYCOMM, DEF01, 
+    DEF02, DEF03, DEF04, DEF05
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DGQ.BOOKPUBLISHCOMPANYINFO
+    where PUBLISHCOMPANYID = #{publishcompanyid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from DGQ.BOOKPUBLISHCOMPANYINFO
+    where PUBLISHCOMPANYID = #{publishcompanyid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.library.pojo.dgq.BookPublishCompanyInfo">
+    insert into DGQ.BOOKPUBLISHCOMPANYINFO (PUBLISHCOMPANYID, PUBLISHCOMPANYABBR, 
+      PUBLISHCOMPANYNAME, PUBLISHCOMPANYCOMM, 
+      DEF01, DEF02, DEF03, 
+      DEF04, DEF05)
+    values (#{publishcompanyid,jdbcType=DECIMAL}, #{publishcompanyabbr,jdbcType=VARCHAR}, 
+      #{publishcompanyname,jdbcType=VARCHAR}, #{publishcompanycomm,jdbcType=VARCHAR}, 
+      #{def01,jdbcType=VARCHAR}, #{def02,jdbcType=VARCHAR}, #{def03,jdbcType=VARCHAR}, 
+      #{def04,jdbcType=VARCHAR}, #{def05,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.library.pojo.dgq.BookPublishCompanyInfo">
+    insert into DGQ.BOOKPUBLISHCOMPANYINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="publishcompanyid != null">
+        PUBLISHCOMPANYID,
+      </if>
+      <if test="publishcompanyabbr != null">
+        PUBLISHCOMPANYABBR,
+      </if>
+      <if test="publishcompanyname != null">
+        PUBLISHCOMPANYNAME,
+      </if>
+      <if test="publishcompanycomm != null">
+        PUBLISHCOMPANYCOMM,
+      </if>
+      <if test="def01 != null">
+        DEF01,
+      </if>
+      <if test="def02 != null">
+        DEF02,
+      </if>
+      <if test="def03 != null">
+        DEF03,
+      </if>
+      <if test="def04 != null">
+        DEF04,
+      </if>
+      <if test="def05 != null">
+        DEF05,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="publishcompanyid != null">
+        #{publishcompanyid,jdbcType=DECIMAL},
+      </if>
+      <if test="publishcompanyabbr != null">
+        #{publishcompanyabbr,jdbcType=VARCHAR},
+      </if>
+      <if test="publishcompanyname != null">
+        #{publishcompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="publishcompanycomm != null">
+        #{publishcompanycomm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        #{def05,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.library.pojo.dgq.BookPublishCompanyInfo">
+    update DGQ.BOOKPUBLISHCOMPANYINFO
+    <set>
+      <if test="publishcompanyabbr != null">
+        PUBLISHCOMPANYABBR = #{publishcompanyabbr,jdbcType=VARCHAR},
+      </if>
+      <if test="publishcompanyname != null">
+        PUBLISHCOMPANYNAME = #{publishcompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="publishcompanycomm != null">
+        PUBLISHCOMPANYCOMM = #{publishcompanycomm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        DEF01 = #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        DEF02 = #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        DEF03 = #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        DEF04 = #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        DEF05 = #{def05,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PUBLISHCOMPANYID = #{publishcompanyid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.library.pojo.dgq.BookPublishCompanyInfo">
+    update DGQ.BOOKPUBLISHCOMPANYINFO
+    set PUBLISHCOMPANYABBR = #{publishcompanyabbr,jdbcType=VARCHAR},
+      PUBLISHCOMPANYNAME = #{publishcompanyname,jdbcType=VARCHAR},
+      PUBLISHCOMPANYCOMM = #{publishcompanycomm,jdbcType=VARCHAR},
+      DEF01 = #{def01,jdbcType=VARCHAR},
+      DEF02 = #{def02,jdbcType=VARCHAR},
+      DEF03 = #{def03,jdbcType=VARCHAR},
+      DEF04 = #{def04,jdbcType=VARCHAR},
+      DEF05 = #{def05,jdbcType=VARCHAR}
+    where PUBLISHCOMPANYID = #{publishcompanyid,jdbcType=DECIMAL}
+  </update>
+</mapper>

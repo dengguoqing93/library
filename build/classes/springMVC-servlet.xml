@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!-- 开启注解开关(启动spring mvc注解驱动),作用于@Controller -->
+    <mvc:annotation-driven></mvc:annotation-driven>
+    
+    <!-- 配置spring mvc自动扫描com.chinasofti.action控制层的spring注解  -->
+    <context:component-scan base-package="com.library.action"></context:component-scan>
+      
+    <!-- 静态资源的过滤，如果DispatcherServlet url映射的是/，就需要对静态资源做过滤 -->
+    
+ 	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
+    <mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+    <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+    <mvc:resources location="/html/" mapping="/html/**"></mvc:resources>
+    <mvc:resources location="/test/" mapping="/test/**"></mvc:resources>
+    <mvc:resources location="/themes/black/" mapping="/themes/black/**"></mvc:resources>
+    <mvc:resources location="/themes/bootstrap/" mapping="/themes/bootstrap/**"></mvc:resources>
+    <mvc:resources location="/themes/default/" mapping="/themes/default/**"></mvc:resources>
+    <mvc:resources location="/themes/gray/" mapping="/themes/gray/**"></mvc:resources>
+    <mvc:resources location="/themes/icons/" mapping="/themes/icons/**"></mvc:resources>
+    <mvc:resources location="/themes/material/" mapping="/themes/material/**"></mvc:resources>
+    <mvc:resources location="/themes/metro/" mapping="/themes/metro/**"></mvc:resources>
+    
+    
+    <!-- 配置视图解析器  /page/XX.jsp-->
+    <bean  id="resultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+    	<property name="prefix" value="/library/html/"></property><!-- 前缀 -->
+    	
+    	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+    </bean>
+        
+	</beans>

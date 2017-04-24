@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.dgq.BookCategoryInfoMapper">
+  <resultMap id="BaseResultMap" type="com.library.pojo.dgq.BookCategoryInfo">
+    <id column="BOOKCATEGORYID" jdbcType="DECIMAL" property="bookcategoryid" />
+    <result column="BOOKCATEGORYABBR" jdbcType="VARCHAR" property="bookcategoryabbr" />
+    <result column="BOOKCATEGORYNAME" jdbcType="VARCHAR" property="bookcategoryname" />
+    <result column="BOOKCATEGORYCOMM" jdbcType="VARCHAR" property="bookcategorycomm" />
+    <result column="DEF01" jdbcType="VARCHAR" property="def01" />
+    <result column="DEF02" jdbcType="VARCHAR" property="def02" />
+    <result column="DEF03" jdbcType="VARCHAR" property="def03" />
+    <result column="DEF04" jdbcType="VARCHAR" property="def04" />
+    <result column="DEF05" jdbcType="VARCHAR" property="def05" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    BOOKCATEGORYID, BOOKCATEGORYABBR, BOOKCATEGORYNAME, BOOKCATEGORYCOMM, DEF01, DEF02, 
+    DEF03, DEF04, DEF05
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DGQ.BOOKCATEGORYINFO
+    where BOOKCATEGORYID = #{bookcategoryid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from DGQ.BOOKCATEGORYINFO
+    where BOOKCATEGORYID = #{bookcategoryid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.library.pojo.dgq.BookCategoryInfo">
+    insert into DGQ.BOOKCATEGORYINFO (BOOKCATEGORYID, BOOKCATEGORYABBR, 
+      BOOKCATEGORYNAME, BOOKCATEGORYCOMM, DEF01, 
+      DEF02, DEF03, DEF04, 
+      DEF05)
+    values (#{bookcategoryid,jdbcType=DECIMAL}, #{bookcategoryabbr,jdbcType=VARCHAR}, 
+      #{bookcategoryname,jdbcType=VARCHAR}, #{bookcategorycomm,jdbcType=VARCHAR}, #{def01,jdbcType=VARCHAR}, 
+      #{def02,jdbcType=VARCHAR}, #{def03,jdbcType=VARCHAR}, #{def04,jdbcType=VARCHAR}, 
+      #{def05,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.library.pojo.dgq.BookCategoryInfo">
+    insert into DGQ.BOOKCATEGORYINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bookcategoryid != null">
+        BOOKCATEGORYID,
+      </if>
+      <if test="bookcategoryabbr != null">
+        BOOKCATEGORYABBR,
+      </if>
+      <if test="bookcategoryname != null">
+        BOOKCATEGORYNAME,
+      </if>
+      <if test="bookcategorycomm != null">
+        BOOKCATEGORYCOMM,
+      </if>
+      <if test="def01 != null">
+        DEF01,
+      </if>
+      <if test="def02 != null">
+        DEF02,
+      </if>
+      <if test="def03 != null">
+        DEF03,
+      </if>
+      <if test="def04 != null">
+        DEF04,
+      </if>
+      <if test="def05 != null">
+        DEF05,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bookcategoryid != null">
+        #{bookcategoryid,jdbcType=DECIMAL},
+      </if>
+      <if test="bookcategoryabbr != null">
+        #{bookcategoryabbr,jdbcType=VARCHAR},
+      </if>
+      <if test="bookcategoryname != null">
+        #{bookcategoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="bookcategorycomm != null">
+        #{bookcategorycomm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        #{def05,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.library.pojo.dgq.BookCategoryInfo">
+    update DGQ.BOOKCATEGORYINFO
+    <set>
+      <if test="bookcategoryabbr != null">
+        BOOKCATEGORYABBR = #{bookcategoryabbr,jdbcType=VARCHAR},
+      </if>
+      <if test="bookcategoryname != null">
+        BOOKCATEGORYNAME = #{bookcategoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="bookcategorycomm != null">
+        BOOKCATEGORYCOMM = #{bookcategorycomm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        DEF01 = #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        DEF02 = #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        DEF03 = #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        DEF04 = #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        DEF05 = #{def05,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BOOKCATEGORYID = #{bookcategoryid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.library.pojo.dgq.BookCategoryInfo">
+    update DGQ.BOOKCATEGORYINFO
+    set BOOKCATEGORYABBR = #{bookcategoryabbr,jdbcType=VARCHAR},
+      BOOKCATEGORYNAME = #{bookcategoryname,jdbcType=VARCHAR},
+      BOOKCATEGORYCOMM = #{bookcategorycomm,jdbcType=VARCHAR},
+      DEF01 = #{def01,jdbcType=VARCHAR},
+      DEF02 = #{def02,jdbcType=VARCHAR},
+      DEF03 = #{def03,jdbcType=VARCHAR},
+      DEF04 = #{def04,jdbcType=VARCHAR},
+      DEF05 = #{def05,jdbcType=VARCHAR}
+    where BOOKCATEGORYID = #{bookcategoryid,jdbcType=DECIMAL}
+  </update>
+</mapper>

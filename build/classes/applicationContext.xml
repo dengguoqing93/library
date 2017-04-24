@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	<!-- SSM整合   begin -->	
+	<!-- 自动扫描com.library包下的spring注解 -->
+	<context:component-scan base-package="com.library"></context:component-scan>
+	<!-- 1. -->
+	<!-- 启动aop自动代理,与aop的注解一起使用 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+		
+	<!-- 加载,classpath表示去classes目录下查找 -->
+	<bean id="dbConfig"	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:db.properties"></property>
+	</bean>
+	
+	<!-- 把c3p0的数据源对象交由spring管理 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${username}" />
+		<property name="password" value="${password}" />
+		<property name="driverClass" value="${driver}" />
+		<property name="jdbcUrl" value="${url}" />
+
+		<!--连接池中保留的最大连接数。默认值: 100 -->
+		<property name="maxPoolSize" value="100" />
+		<!-- 连接池中保留的最小连接数，默认为：10 -->
+		<property name="minPoolSize" value="10" />
+		<!--最大空闲时间，60秒内未使用则连接被丢弃。若为0则永不丢弃。默认值: 0 -->
+		<property name="maxIdleTime" value="60"></property>
+
+		<!-- 初始化连接池中的连接数，取值应在minPoolSize与maxPoolSize之间，默认为10 -->
+		<property name="initialPoolSize" value="10" />
+
+		<!--每60秒检查所有连接池中的空闲连接。默认值: 0，不检查 -->
+		<property name="idleConnectionTestPeriod" value="60"></property>
+	</bean>
+	<!-- mybatis的SqlSessionFactory交由spring管理 -->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 为SqlSessionFactory注入数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="typeAliasesPackage" value="com.library.pojo.dgq"></property>
+		<!-- 如果xml映射文件和映射接口在不同目录需要以下配置 -->
+		<property name="mapperLocations" value="classpath:com/library/mapping/dgq/*.xml"></property>
+	</bean>
+	<!-- 配置自动扫描mybatis的映射接口和映射文件 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.library.dao.dgq" />
+		<property name="sqlSessionFactoryBeanName" value="sessionFactory" />
+	</bean>
+	
+	<!-- 声明式事务,配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 将事务advice的管理者为transactionManager,配置事务的范围 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!--若当前没有事务则新建一个事务。(也就是说没有sessionfactory的时候就会自动建立，有的时候就不会建立了。) -->
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception" read-only="false"/>
+			<tx:method name="add*" propagation="REQUIRED"  rollback-for="java.lang.Exception"  read-only="false"/>
+			<tx:method name="create*" propagation="REQUIRED"  rollback-for="java.lang.Exception"  read-only="false"/>
+			<tx:method name="insert*" propagation="REQUIRED"  rollback-for="java.lang.Exception"  read-only="false"/>
+			
+			<tx:method name="edit*" propagation="REQUIRED"  rollback-for="java.lang.Exception"  read-only="false"/>
+			<tx:method name="modify*" propagation="REQUIRED"  rollback-for="java.lang.Exception"  read-only="false"/>
+			<tx:method name="update*" propagation="REQUIRED"  rollback-for="java.lang.Exception"  read-only="false"/>
+			
+			<tx:method name="del*" propagation="REQUIRED"  rollback-for="java.lang.Exception"  read-only="false"/>
+			
+			<tx:method name="query*" propagation="REQUIRED"   read-only="true"/>
+			<tx:method name="find*" propagation="REQUIRED"    read-only="true"/>
+			<tx:method name="search*" propagation="REQUIRED"  read-only="true"/>
+			
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice>	
+	<!-- 配置切入点与事务通知关联 -->
+	<aop:config>
+		<aop:pointcut id="serviceReg" expression="execution(* com.library.service.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceReg"/>
+	</aop:config>
+	<!-- SSM整合   end -->	
+</beans>

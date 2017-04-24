@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.dgq.AdminInfoMapper">
+  <resultMap id="BaseResultMap" type="com.library.pojo.dgq.AdminInfo">
+    <id column="ADMINID" jdbcType="DECIMAL" property="adminid" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="PWD" jdbcType="VARCHAR" property="pwd" />
+    <result column="ADMINNAME" jdbcType="VARCHAR" property="adminname" />
+    <result column="ADMINSEX" jdbcType="DECIMAL" property="adminsex" />
+    <result column="ADMINPHONE" jdbcType="DECIMAL" property="adminphone" />
+    <result column="COMM" jdbcType="VARCHAR" property="comm" />
+    <result column="DEF01" jdbcType="VARCHAR" property="def01" />
+    <result column="DEF02" jdbcType="VARCHAR" property="def02" />
+    <result column="DEF03" jdbcType="VARCHAR" property="def03" />
+    <result column="DEF04" jdbcType="VARCHAR" property="def04" />
+    <result column="DEF05" jdbcType="VARCHAR" property="def05" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ADMINID, USERNAME, PWD, ADMINNAME, ADMINSEX, ADMINPHONE, COMM, DEF01, DEF02, DEF03, 
+    DEF04, DEF05
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DGQ.ADMININFO
+    where ADMINID = #{adminid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from DGQ.ADMININFO
+    where ADMINID = #{adminid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.library.pojo.dgq.AdminInfo">
+    insert into DGQ.ADMININFO (ADMINID, USERNAME, PWD, 
+      ADMINNAME, ADMINSEX, ADMINPHONE, 
+      COMM, DEF01, DEF02, 
+      DEF03, DEF04, DEF05
+      )
+    values (#{adminid,jdbcType=DECIMAL}, #{username,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
+      #{adminname,jdbcType=VARCHAR}, #{adminsex,jdbcType=DECIMAL}, #{adminphone,jdbcType=DECIMAL}, 
+      #{comm,jdbcType=VARCHAR}, #{def01,jdbcType=VARCHAR}, #{def02,jdbcType=VARCHAR}, 
+      #{def03,jdbcType=VARCHAR}, #{def04,jdbcType=VARCHAR}, #{def05,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.library.pojo.dgq.AdminInfo">
+    insert into DGQ.ADMININFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminid != null">
+        ADMINID,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="pwd != null">
+        PWD,
+      </if>
+      <if test="adminname != null">
+        ADMINNAME,
+      </if>
+      <if test="adminsex != null">
+        ADMINSEX,
+      </if>
+      <if test="adminphone != null">
+        ADMINPHONE,
+      </if>
+      <if test="comm != null">
+        COMM,
+      </if>
+      <if test="def01 != null">
+        DEF01,
+      </if>
+      <if test="def02 != null">
+        DEF02,
+      </if>
+      <if test="def03 != null">
+        DEF03,
+      </if>
+      <if test="def04 != null">
+        DEF04,
+      </if>
+      <if test="def05 != null">
+        DEF05,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminid != null">
+        #{adminid,jdbcType=DECIMAL},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="adminname != null">
+        #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="adminsex != null">
+        #{adminsex,jdbcType=DECIMAL},
+      </if>
+      <if test="adminphone != null">
+        #{adminphone,jdbcType=DECIMAL},
+      </if>
+      <if test="comm != null">
+        #{comm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        #{def05,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.library.pojo.dgq.AdminInfo">
+    update DGQ.ADMININFO
+    <set>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        PWD = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="adminname != null">
+        ADMINNAME = #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="adminsex != null">
+        ADMINSEX = #{adminsex,jdbcType=DECIMAL},
+      </if>
+      <if test="adminphone != null">
+        ADMINPHONE = #{adminphone,jdbcType=DECIMAL},
+      </if>
+      <if test="comm != null">
+        COMM = #{comm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        DEF01 = #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        DEF02 = #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        DEF03 = #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        DEF04 = #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        DEF05 = #{def05,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ADMINID = #{adminid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.library.pojo.dgq.AdminInfo">
+    update DGQ.ADMININFO
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      PWD = #{pwd,jdbcType=VARCHAR},
+      ADMINNAME = #{adminname,jdbcType=VARCHAR},
+      ADMINSEX = #{adminsex,jdbcType=DECIMAL},
+      ADMINPHONE = #{adminphone,jdbcType=DECIMAL},
+      COMM = #{comm,jdbcType=VARCHAR},
+      DEF01 = #{def01,jdbcType=VARCHAR},
+      DEF02 = #{def02,jdbcType=VARCHAR},
+      DEF03 = #{def03,jdbcType=VARCHAR},
+      DEF04 = #{def04,jdbcType=VARCHAR},
+      DEF05 = #{def05,jdbcType=VARCHAR}
+    where ADMINID = #{adminid,jdbcType=DECIMAL}
+  </update>
+  <!-- 通过登录页面的用户名和密码返回用户  -->
+  <select id="selectByAdmin" resultMap="BaseResultMap" parameterType="AdminInfo">
+  	select  <include refid="Base_Column_List" /> 
+  	from DGQ.ADMININFO a where username=#{username,jdbcType=VARCHAR} and pwd = #{pwd,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据管理员用户名查询 -->
+  <select id="selectByAdminName" resultType="AdminInfo">
+  	select <include refid="Base_Column_List" /> from DGQ.ADMININFO where username = #{username,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

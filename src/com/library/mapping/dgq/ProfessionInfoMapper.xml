@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.dgq.ProfessionInfoMapper">
+  <resultMap id="BaseResultMap" type="com.library.pojo.dgq.ProfessionInfo">
+    <id column="PROFESSIONID" jdbcType="DECIMAL" property="professionid" />
+    <result column="PROFESSIONNO" jdbcType="DECIMAL" property="professionno" />
+    <result column="PROFESSIONNAME" jdbcType="VARCHAR" property="professionname" />
+    <result column="DEPARTMENTID" jdbcType="DECIMAL" property="departmentid" />
+    <result column="PROFESSIONCOMM" jdbcType="VARCHAR" property="professioncomm" />
+    <result column="DEF01" jdbcType="VARCHAR" property="def01" />
+    <result column="DEF02" jdbcType="VARCHAR" property="def02" />
+    <result column="DEF03" jdbcType="VARCHAR" property="def03" />
+    <result column="DEF04" jdbcType="VARCHAR" property="def04" />
+    <result column="DEF05" jdbcType="VARCHAR" property="def05" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PROFESSIONID, PROFESSIONNO, PROFESSIONNAME, DEPARTMENTID, PROFESSIONCOMM, DEF01, 
+    DEF02, DEF03, DEF04, DEF05
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DGQ.PROFESSIONINFO
+    where PROFESSIONID = #{professionid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from DGQ.PROFESSIONINFO
+    where PROFESSIONID = #{professionid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.library.pojo.dgq.ProfessionInfo">
+    insert into DGQ.PROFESSIONINFO (PROFESSIONID, PROFESSIONNO, PROFESSIONNAME, 
+      DEPARTMENTID, PROFESSIONCOMM, DEF01, 
+      DEF02, DEF03, DEF04, 
+      DEF05)
+    values (#{professionid,jdbcType=DECIMAL}, #{professionno,jdbcType=DECIMAL}, #{professionname,jdbcType=VARCHAR}, 
+      #{departmentid,jdbcType=DECIMAL}, #{professioncomm,jdbcType=VARCHAR}, #{def01,jdbcType=VARCHAR}, 
+      #{def02,jdbcType=VARCHAR}, #{def03,jdbcType=VARCHAR}, #{def04,jdbcType=VARCHAR}, 
+      #{def05,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.library.pojo.dgq.ProfessionInfo">
+    insert into DGQ.PROFESSIONINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="professionid != null">
+        PROFESSIONID,
+      </if>
+      <if test="professionno != null">
+        PROFESSIONNO,
+      </if>
+      <if test="professionname != null">
+        PROFESSIONNAME,
+      </if>
+      <if test="departmentid != null">
+        DEPARTMENTID,
+      </if>
+      <if test="professioncomm != null">
+        PROFESSIONCOMM,
+      </if>
+      <if test="def01 != null">
+        DEF01,
+      </if>
+      <if test="def02 != null">
+        DEF02,
+      </if>
+      <if test="def03 != null">
+        DEF03,
+      </if>
+      <if test="def04 != null">
+        DEF04,
+      </if>
+      <if test="def05 != null">
+        DEF05,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="professionid != null">
+        #{professionid,jdbcType=DECIMAL},
+      </if>
+      <if test="professionno != null">
+        #{professionno,jdbcType=DECIMAL},
+      </if>
+      <if test="professionname != null">
+        #{professionname,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null">
+        #{departmentid,jdbcType=DECIMAL},
+      </if>
+      <if test="professioncomm != null">
+        #{professioncomm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        #{def05,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.library.pojo.dgq.ProfessionInfo">
+    update DGQ.PROFESSIONINFO
+    <set>
+      <if test="professionno != null">
+        PROFESSIONNO = #{professionno,jdbcType=DECIMAL},
+      </if>
+      <if test="professionname != null">
+        PROFESSIONNAME = #{professionname,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null">
+        DEPARTMENTID = #{departmentid,jdbcType=DECIMAL},
+      </if>
+      <if test="professioncomm != null">
+        PROFESSIONCOMM = #{professioncomm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        DEF01 = #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        DEF02 = #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        DEF03 = #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        DEF04 = #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        DEF05 = #{def05,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PROFESSIONID = #{professionid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.library.pojo.dgq.ProfessionInfo">
+    update DGQ.PROFESSIONINFO
+    set PROFESSIONNO = #{professionno,jdbcType=DECIMAL},
+      PROFESSIONNAME = #{professionname,jdbcType=VARCHAR},
+      DEPARTMENTID = #{departmentid,jdbcType=DECIMAL},
+      PROFESSIONCOMM = #{professioncomm,jdbcType=VARCHAR},
+      DEF01 = #{def01,jdbcType=VARCHAR},
+      DEF02 = #{def02,jdbcType=VARCHAR},
+      DEF03 = #{def03,jdbcType=VARCHAR},
+      DEF04 = #{def04,jdbcType=VARCHAR},
+      DEF05 = #{def05,jdbcType=VARCHAR}
+    where PROFESSIONID = #{professionid,jdbcType=DECIMAL}
+  </update>
+</mapper>

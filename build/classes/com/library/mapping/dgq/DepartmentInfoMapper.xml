@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.dgq.DepartmentInfoMapper">
+  <resultMap id="BaseResultMap" type="com.library.pojo.dgq.DepartmentInfo">
+    <id column="DEPARTMENTID" jdbcType="DECIMAL" property="departmentid" />
+    <result column="DEPARTMENTNO" jdbcType="DECIMAL" property="departmentno" />
+    <result column="DEPARTMENTNAME" jdbcType="VARCHAR" property="departmentname" />
+    <result column="DEPARTMENTCOMM" jdbcType="VARCHAR" property="departmentcomm" />
+    <result column="DEF01" jdbcType="VARCHAR" property="def01" />
+    <result column="DEF02" jdbcType="VARCHAR" property="def02" />
+    <result column="DEF03" jdbcType="VARCHAR" property="def03" />
+    <result column="DEF04" jdbcType="VARCHAR" property="def04" />
+    <result column="DEF05" jdbcType="VARCHAR" property="def05" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DEPARTMENTID, DEPARTMENTNO, DEPARTMENTNAME, DEPARTMENTCOMM, DEF01, DEF02, DEF03, 
+    DEF04, DEF05
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DGQ.DEPARTMENTINFO
+    where DEPARTMENTID = #{departmentid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from DGQ.DEPARTMENTINFO
+    where DEPARTMENTID = #{departmentid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.library.pojo.dgq.DepartmentInfo">
+    insert into DGQ.DEPARTMENTINFO (DEPARTMENTID, DEPARTMENTNO, DEPARTMENTNAME, 
+      DEPARTMENTCOMM, DEF01, DEF02, 
+      DEF03, DEF04, DEF05
+      )
+    values (#{departmentid,jdbcType=DECIMAL}, #{departmentno,jdbcType=DECIMAL}, #{departmentname,jdbcType=VARCHAR}, 
+      #{departmentcomm,jdbcType=VARCHAR}, #{def01,jdbcType=VARCHAR}, #{def02,jdbcType=VARCHAR}, 
+      #{def03,jdbcType=VARCHAR}, #{def04,jdbcType=VARCHAR}, #{def05,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.library.pojo.dgq.DepartmentInfo">
+    insert into DGQ.DEPARTMENTINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="departmentid != null">
+        DEPARTMENTID,
+      </if>
+      <if test="departmentno != null">
+        DEPARTMENTNO,
+      </if>
+      <if test="departmentname != null">
+        DEPARTMENTNAME,
+      </if>
+      <if test="departmentcomm != null">
+        DEPARTMENTCOMM,
+      </if>
+      <if test="def01 != null">
+        DEF01,
+      </if>
+      <if test="def02 != null">
+        DEF02,
+      </if>
+      <if test="def03 != null">
+        DEF03,
+      </if>
+      <if test="def04 != null">
+        DEF04,
+      </if>
+      <if test="def05 != null">
+        DEF05,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="departmentid != null">
+        #{departmentid,jdbcType=DECIMAL},
+      </if>
+      <if test="departmentno != null">
+        #{departmentno,jdbcType=DECIMAL},
+      </if>
+      <if test="departmentname != null">
+        #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentcomm != null">
+        #{departmentcomm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        #{def05,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.library.pojo.dgq.DepartmentInfo">
+    update DGQ.DEPARTMENTINFO
+    <set>
+      <if test="departmentno != null">
+        DEPARTMENTNO = #{departmentno,jdbcType=DECIMAL},
+      </if>
+      <if test="departmentname != null">
+        DEPARTMENTNAME = #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentcomm != null">
+        DEPARTMENTCOMM = #{departmentcomm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        DEF01 = #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        DEF02 = #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        DEF03 = #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        DEF04 = #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        DEF05 = #{def05,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DEPARTMENTID = #{departmentid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.library.pojo.dgq.DepartmentInfo">
+    update DGQ.DEPARTMENTINFO
+    set DEPARTMENTNO = #{departmentno,jdbcType=DECIMAL},
+      DEPARTMENTNAME = #{departmentname,jdbcType=VARCHAR},
+      DEPARTMENTCOMM = #{departmentcomm,jdbcType=VARCHAR},
+      DEF01 = #{def01,jdbcType=VARCHAR},
+      DEF02 = #{def02,jdbcType=VARCHAR},
+      DEF03 = #{def03,jdbcType=VARCHAR},
+      DEF04 = #{def04,jdbcType=VARCHAR},
+      DEF05 = #{def05,jdbcType=VARCHAR}
+    where DEPARTMENTID = #{departmentid,jdbcType=DECIMAL}
+  </update>
+</mapper>

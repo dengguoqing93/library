@@ -14,7 +14,7 @@
         <style type="text/css">  
             #code  
             {  
-                font-family:Arial;
+                font-family:Arial;  
                 font-style:italic;  
                 font-weight:bold;  
                 border:0;  
@@ -24,14 +24,21 @@
         </style>
         <script type="text/javascript" src="/library/js/jquery.min.js"></script>
         <script type="text/javascript" src="/library/js/jquery.easyui.min.js"></script>
-		<script type="text/javascript" src="/library/js/login_check.js"></script>
+		<script type="text/javascript">
+		/*  function vertifyAdminName() {
+			alert("进入函数");
+		}  */
+		
+		$("#userName").blur(function () {
+			alert("hello world!")
+		})
+		</script>
 </head>
 
     <body>
         <div id="baseBackground">
             <form id="user" action="#" method="post" accept-charset="utf-8">
-                                            用户名：<input type="text" name="username" id="userName" />
-                 <span id="msg" style="color: red;"></span>
+                                            用户名：<input type="text" name="adminName" id="userName" onblur="vertifyAdminName()" />
                 <br/>
                 <br/>
                	密&nbsp;&nbsp;&nbsp;码：<input type="password" name="pwd" id="pwd" />
@@ -42,7 +49,7 @@
                 <input type="button" name="code" id="code"/>
                 <br/>
                 <br/>
-                <a id="submit">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a id="submit">登录</a>
                 <a id="reset">重置</a>
             </form>
         </div>
