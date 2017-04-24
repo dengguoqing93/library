@@ -1,1 +1,11 @@
 1、json字符串添加至表格中，需要有rows属性来串联被插入的数组数据
+2、为easyui中类textbox填加onblur事件
+	2.1 在原html标签之后添加一个span标签	
+	方法一：
+		$("input",$("#studentno").next("span")).blur(function(){
+            	//函数体
+		});
+	方法二：
+		$("#studentno").next("span").children().first().blur(function(){
+				//函数体
+		});

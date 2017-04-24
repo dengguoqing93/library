@@ -7,7 +7,7 @@ public class ProfessionInfo {
 
     private String professionname;
 
-    private Long departmentid;
+    private DepartmentInfo department;
 
     private String professioncomm;
 
@@ -44,16 +44,18 @@ public class ProfessionInfo {
     public void setProfessionname(String professionname) {
         this.professionname = professionname == null ? null : professionname.trim();
     }
+    
+    
+    
+    public DepartmentInfo getDepartment() {
+		return department;
+	}
 
-    public Long getDepartmentid() {
-        return departmentid;
-    }
+	public void setDepartment(DepartmentInfo department) {
+		this.department = department;
+	}
 
-    public void setDepartmentid(Long departmentid) {
-        this.departmentid = departmentid;
-    }
-
-    public String getProfessioncomm() {
+	public String getProfessioncomm() {
         return professioncomm;
     }
 

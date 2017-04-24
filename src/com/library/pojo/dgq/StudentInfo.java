@@ -9,7 +9,7 @@ public class StudentInfo {
 
     private Short grade;
 
-    private Long departmentid;
+    private DepartmentInfo department;
 
     private Long classes;
 
@@ -33,7 +33,7 @@ public class StudentInfo {
 
     private String def05;
 
-    private Long professionid;
+    private ProfessionInfo profession;
 
     private String studentname;
 
@@ -69,13 +69,6 @@ public class StudentInfo {
         this.grade = grade;
     }
 
-    public Long getDepartmentid() {
-        return departmentid;
-    }
-
-    public void setDepartmentid(Long departmentid) {
-        this.departmentid = departmentid;
-    }
 
     public Long getClasses() {
         return classes;
@@ -164,16 +157,26 @@ public class StudentInfo {
     public void setDef05(String def05) {
         this.def05 = def05 == null ? null : def05.trim();
     }
+    
+    
 
-    public Long getProfessionid() {
-        return professionid;
-    }
+    public DepartmentInfo getDepartment() {
+		return department;
+	}
 
-    public void setProfessionid(Long professionid) {
-        this.professionid = professionid;
-    }
+	public void setDepartment(DepartmentInfo department) {
+		this.department = department;
+	}
 
-    public String getStudentname() {
+	public ProfessionInfo getProfession() {
+		return profession;
+	}
+
+	public void setProfession(ProfessionInfo profession) {
+		this.profession = profession;
+	}
+
+	public String getStudentname() {
         return studentname;
     }
 

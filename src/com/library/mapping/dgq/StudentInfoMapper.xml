@@ -6,7 +6,6 @@
     <result column="PWD" jdbcType="VARCHAR" property="pwd" />
     <result column="STUDENTSEX" jdbcType="DECIMAL" property="studentsex" />
     <result column="GRADE" jdbcType="DECIMAL" property="grade" />
-    <result column="DEPARTMENTID" jdbcType="DECIMAL" property="departmentid" />
     <result column="CLASSES" jdbcType="DECIMAL" property="classes" />
     <result column="STUDENTPHONE" jdbcType="DECIMAL" property="studentphone" />
     <result column="BORROWQUANTITIES" jdbcType="DECIMAL" property="borrowquantities" />
@@ -18,8 +17,11 @@
     <result column="DEF03" jdbcType="VARCHAR" property="def03" />
     <result column="DEF04" jdbcType="VARCHAR" property="def04" />
     <result column="DEF05" jdbcType="VARCHAR" property="def05" />
-    <result column="PROFESSIONID" jdbcType="DECIMAL" property="professionid" />
     <result column="STUDENTNAME" jdbcType="VARCHAR" property="studentname" />
+	<association property="department" javaType="DepartmentInfo" column="departmentid" select="selectDepartment" >
+		
+	</association>  
+	<association property="profession" javaType="DepartmentInfo" column="professionid" select="selectProfession"></association>  
   </resultMap>
   <sql id="Base_Column_List">
     STUDENTNO, PWD, STUDENTSEX, GRADE, DEPARTMENTID, CLASSES, STUDENTPHONE, BORROWQUANTITIES, 
