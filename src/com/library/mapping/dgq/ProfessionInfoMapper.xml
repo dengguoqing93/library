@@ -5,7 +5,6 @@
     <id column="PROFESSIONID" jdbcType="DECIMAL" property="professionid" />
     <result column="PROFESSIONNO" jdbcType="DECIMAL" property="professionno" />
     <result column="PROFESSIONNAME" jdbcType="VARCHAR" property="professionname" />
-    <result column="DEPARTMENTID" jdbcType="DECIMAL" property="departmentid" />
     <result column="PROFESSIONCOMM" jdbcType="VARCHAR" property="professioncomm" />
     <result column="DEF01" jdbcType="VARCHAR" property="def01" />
     <result column="DEF02" jdbcType="VARCHAR" property="def02" />
