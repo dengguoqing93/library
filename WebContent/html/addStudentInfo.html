@@ -49,7 +49,7 @@
 	
 	<div id="studentInfo"  style="height: 600px;border: 1px solid red;text-align: center;">
 	<h1 style="color: orange; padding: 20px">添加学生信息</h1>
-		<form id="studentInfo" action="/library/student/addStudent" method="post">
+		<form id="student" action="#" method="post" accept-charset="utf-8">
 			<label>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label><input type="text" id="studentno" name="studentno">
 			<span id="msg"></span>
 			<!-- 设置学号的样式 -->
@@ -93,7 +93,7 @@
 			<input type="radio" name="studentsex" value="1">
 			 <label>女</label><img alt="图片有误" src="/library/img/user_female.png">
 			 <br /><br /> 
-			<label>院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系：</label><input type="text" id="departmentname" name="departmentname">
+			<label>院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系：</label><input id="departmentname" name="departmentname">
 			<!-- 设置院系：
 				院系依赖于学号.因此，设置为只读字段
 			-->
@@ -104,17 +104,17 @@
 				});
 			</script>
 			<br /><br />
-			 <label>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label><input type="text" id="professionname" name="professionname"> 
-			 <!-- 设置专业:
-			 	专业依赖于学号.因此，设置为只读字段
-			 -->
+			<label>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label><input id="professionname" name="professionname">
+			<!-- 设置专业：
+				院系依赖于学号.因此，设置为只读字段
+			-->
 			 <script type="text/javascript">
-				$("#professionname").textbox({
-					readonly:true
-				});
+				 $("#professionname").textbox({
+						readonly:true
+					}); 
 			</script>
 			 <br /><br />
-			 <label>班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：</label><input type="text" id="classes" name="classes"> 
+			 <label>班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：</label><input  id="classes" name="classes"> 
 			 <!--  设置班级：
 			 	班级依赖于学号.因此，设置为只读字段
 			 -->
@@ -126,9 +126,6 @@
 			<br /><br />
 			<a id="submit">添加</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a id="reset" onclick="resetForm()">重置</a>
-            
-			<!-- <input type="submit" value="提交" class="myButton"/>&nbsp;&nbsp;&nbsp;
-			<input type="reset" value="重置" class="myButton"> -->
 		</form>
 	</div>
 </body>

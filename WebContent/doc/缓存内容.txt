@@ -58,3 +58,14 @@
 		<result column="PROFESSIONNO" jdbcType="DECIMAL" property="professionno" />
 		<result column="PROFESSIONNAME" jdbcType="VARCHAR" property="professionname" />
 	</resultMap>
+	
+<!--  //<label>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label><input  id="professionname" name="professionname">  -->
+			 <label>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label><input id="professionname" name="professionname">
+			 <!-- 设置专业:
+			 	专业依赖于学号.因此，设置为只读字段
+			 -->
+			 <script type="text/javascript">
+				$("#professionname").textbox({
+					readonly:true
+				});
+			</script>

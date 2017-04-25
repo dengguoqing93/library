@@ -11,7 +11,6 @@ public class Student {
 	private String departmentname;
 	private String professionname;
 	
-	
 	public short getStudentsex() {
 		return studentsex;
 	}
@@ -67,7 +66,12 @@ public class Student {
 	public void setProfessionname(String professionname) {
 		this.professionname = professionname;
 	}
-	
+	@Override
+	public String toString() {
+		return "Student [studentno=" + studentno + ", studentname=" + studentname + ", studentphone=" + studentphone
+				+ ", studentsex=" + studentsex + ", grade=" + grade + ", pwd=" + pwd + ", classes=" + classes
+				+ ", departmentname=" + departmentname + ", professionname=" + professionname + "]";
+	}
 	
 	
 }

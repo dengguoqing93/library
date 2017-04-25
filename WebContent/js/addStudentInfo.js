@@ -38,7 +38,7 @@ $(function() {
 		} else {
 			var studentno = $("#studentno").val();
 			$.ajax({
-
+				
 				url : '/library/student/vertifyStudentNo',
 				type : 'POST',
 				contentType : "application/json",
@@ -46,13 +46,15 @@ $(function() {
 					'studentno' : studentno
 				}),
 				success : function(data) {
-					if (data == null) {
+					var json = eval("(" + data + ")");
+					if (json == null) {
+						alert("输入信息有误");
 						$("#msg").text("输入的信息有误");
 						return false;
 					} else {
-						var json = eval("(" + data + ")");
+						
 						$("#departmentname").textbox('setValue', json["departmentName"]);
-						$("#professionname").textbox('setText', json["professionName"]);
+						$("#professionname").textbox('setValue', json["professionName"]);
 						$("#classes").textbox('setValue', json["classno"]);
 					}
 				}
@@ -63,9 +65,7 @@ $(function() {
 	/*
 	 * 登录事件
 	 */
-
-	$('#submit').bind('click', function() {
-		$("#studentInfo").form('submit', {
+	$("#student").form({
 			url : '/library/student/addStudent',
 			onSubmit : function() {
 				if (!$("#studentno").numberbox('isValid')) {
@@ -82,10 +82,11 @@ $(function() {
 				};
 			},
 			success : function(msg) {
-				alert("11111");
+				
 			}
 		});
-
+	$('#submit').bind('click', function() {
+		$("#student").submit();
 	});
 
 });

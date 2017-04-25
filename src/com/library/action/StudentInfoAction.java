@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.library.pojo.dgq.DepartmentInfo;
 import com.library.pojo.dgq.ProfessionInfo;
 import com.library.pojo.dgq.Student;
+import com.library.pojo.dgq.StudentInfo;
 import com.library.service.IStudentService;
 
 @Controller
@@ -36,6 +37,20 @@ public class StudentInfoAction {
 		 * 对获取的学生编号进行处理
 		 */
 		String studentno = jsonObject.get("studentno").toString();
+		
+		StudentInfo studentSelect = studentService.selectByPrimaryKey(Long.parseLong(studentno));
+		if (studentSelect != null) {
+			System.out.println("进入该函数");
+			return null;
+		}else {
+			return parseStudentno(studentno);
+		}
+		
+	}
+	/*
+	 * 解析传入的学号
+	 */
+	private String parseStudentno(String studentno) {
 		short departmentno = Short.parseShort(studentno.substring(2, 4));
 		long professionno = Long.parseLong(studentno.substring(4, 6));
 		String classno = studentno.substring(6,8);
@@ -58,12 +73,26 @@ public class StudentInfoAction {
 	/*
 	 *添加学生信息 
 	 */
-	@RequestMapping(value="addStudent")
+	@RequestMapping(value="addStudent",produces="text/html;charset=utf-8",method=RequestMethod.POST)
 	@ResponseBody
 	public String addStudent(Student student) {
-		System.out.println("进入服务器！");
-		//int insertResult = studentService.insertStudentInfo(student);
-		//return insertResult;
-		return null;
+		/**
+		 * 学生设置
+		 */
+		Student tidyStudent = tidyStudent(student);
+		int result = studentService.insertStudentInfo(tidyStudent);
+		if (result == 0) {
+			return "false";
+		}
+		return "true";
+	}
+	
+	private Student tidyStudent(Student student){
+		String studentno = Long.toString(student.getStudentno());
+		//班级号设置
+		student.setGrade(Short.parseShort(studentno.substring(0, 2)));
+		String pwd = studentno.substring(studentno.length()-6);
+		student.setPwd(pwd);
+		return student;
 	}
 }
