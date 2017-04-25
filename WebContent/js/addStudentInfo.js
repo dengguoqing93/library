@@ -47,12 +47,10 @@ $(function() {
 				}),
 				success : function(data) {
 					var json = eval("(" + data + ")");
-					if (json == null) {
-						alert("输入信息有误");
-						$("#msg").text("输入的信息有误");
+					if (json['msg']!=null) {
+						$("#msg").text(json['msg']);
 						return false;
 					} else {
-						
 						$("#departmentname").textbox('setValue', json["departmentName"]);
 						$("#professionname").textbox('setValue', json["professionName"]);
 						$("#classes").textbox('setValue', json["classno"]);

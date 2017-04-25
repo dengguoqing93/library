@@ -39,18 +39,22 @@ public class StudentInfoAction {
 		String studentno = jsonObject.get("studentno").toString();
 		
 		StudentInfo studentSelect = studentService.selectByPrimaryKey(Long.parseLong(studentno));
+		Map<String, String> map = new HashMap<String,String>();
+		String jsonString = null;
 		if (studentSelect != null) {
-			System.out.println("进入该函数");
-			return null;
-		}else {
-			return parseStudentno(studentno);
+			map.put("msg", "该用户已添加");
+			jsonString = JSON.toJSONString(map);
+		}else{
+			jsonString = parseStudentno(studentno,map);
 		}
+		return jsonString;
+		
 		
 	}
 	/*
 	 * 解析传入的学号
 	 */
-	private String parseStudentno(String studentno) {
+	private String parseStudentno(String studentno,Map<String, String> map) {
 		short departmentno = Short.parseShort(studentno.substring(2, 4));
 		long professionno = Long.parseLong(studentno.substring(4, 6));
 		String classno = studentno.substring(6,8);
@@ -60,14 +64,15 @@ public class StudentInfoAction {
 			/*
 			 * 返回值的包装
 			 */
-			Map<String, String> map = new HashMap<String,String>();
 			map.put("departmentName", department.getDepartmentname());
 			map.put("professionName", profession.getProfessionname());
 			map.put("classno", classno);
-			String jsonString = JSON.toJSONString(map);
-			return jsonString;
+		}else {
+			map.put("msg","输入的学号有误！");
 		}
-		return null;
+		String jsonString = JSON.toJSONString(map);
+		return jsonString;
+		
 	}
 	
 	/*

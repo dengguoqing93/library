@@ -51,7 +51,8 @@
 	<h1 style="color: orange; padding: 20px">添加学生信息</h1>
 		<form id="student" action="#" method="post" accept-charset="utf-8">
 			<label>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label><input type="text" id="studentno" name="studentno">
-			<span id="msg"></span>
+			<br />
+			<span id="msg" style="font-size: large;color: red;"></span>
 			<!-- 设置学号的样式 -->
 			<script type="text/javascript">
 				/* 设置学号为数字输入框 */
@@ -64,7 +65,7 @@
 					invalidMessage:'学号格式不正确'
 				});
 			</script>
-			<br /><br />
+			<br />
 			 <label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input type="text" id="studentname" name="studentname">
 			 <!-- 验证输入的姓名非空，且全部是汉字 -->
 			 <script type="text/javascript">
