@@ -102,4 +102,12 @@ public class ProfessionInfo {
     public void setDef05(String def05) {
         this.def05 = def05 == null ? null : def05.trim();
     }
+
+	@Override
+	public String toString() {
+		return "ProfessionInfo [professionid=" + professionid + ", professionno=" + professionno + ", professionname="
+				+ professionname + ", department=" + department + ", professioncomm=" + professioncomm + ", def01="
+				+ def01 + ", def02=" + def02 + ", def03=" + def03 + ", def04=" + def04 + ", def05=" + def05 + "]";
+	}
+    
 }

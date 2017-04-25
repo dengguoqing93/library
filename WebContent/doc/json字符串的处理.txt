@@ -37,3 +37,7 @@
 			或者：
 		3、将json字符串转化成map的方法
 			（1）、Map<String, List<Person>> parseObject = JSON.parseObject(jsonMap, new TypeReference<Map<String, List<Person>>>(){})
+3、js中解析json字符串
+	var json = eval('('+data+')')
+	取值：
+	json['propety']		

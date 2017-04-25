@@ -9,3 +9,6 @@
 		$("#studentno").next("span").children().first().blur(function(){
 				//函数体
 		});
+3、easyui的textbox属性设置值的方法：
+	$("#id").textbox('setValue',value)
+	$("#id").textbox('setText',value)

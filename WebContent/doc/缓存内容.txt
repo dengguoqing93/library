@@ -1,0 +1,60 @@
+1、从departmentmap.xml中剪切
+, DEPARTMENTCOMM, DEF01, DEF02, DEF03, 
+    DEF04, DEF05
+2、studentinfoMapper.xml剪切
+<!-- 查询学生信息 -->
+	<select id="selectStudent" resultMap="studentMap">
+		select
+		s.studentno as studentno
+		s.pwd as pwd
+		s.studentsex as studentsex
+		s.grade as grade
+		s.classes as classes
+		s.studentphone as studentphone
+		s.borrowquantities as borrowquantities
+		s.borrowedquantities as borrowedquantities
+		s.borrowprivilege as borrowprivilege
+		s.studentname as studentname
+		d.departmentid as departmentid
+		d.departmentno as departmentno
+		d.departmentname as departmentname
+		p.professionid as professionid
+		p.professionno as professionno
+		p.professionname as professionname
+		from STUDENTINFO s left join DEPARTMENT d on s.departmentid =
+		d.departmentid
+		left join profession p on s.professionid = p.professionid
+		where studentno = #{studentno}
+	</select>
+	<!-- 学生信息的映射 -->
+	<resultMap id="studentMap" type="StudentInfo">
+		<id column="STUDENTNO" jdbcType="DECIMAL" property="studentno" />
+		<result column="PWD" jdbcType="VARCHAR" property="pwd" />
+		<result column="STUDENTSEX" jdbcType="DECIMAL" property="studentsex" />
+		<result column="GRADE" jdbcType="DECIMAL" property="grade" />
+		<result column="CLASSES" jdbcType="DECIMAL" property="classes" />
+		<result column="STUDENTPHONE" jdbcType="DECIMAL" property="studentphone" />
+		<result column="BORROWQUANTITIES" jdbcType="DECIMAL" property="borrowquantities" />
+		<result column="BORROWEDQUANTITIES" jdbcType="DECIMAL"
+			property="borrowedquantities" />
+		<result column="BORROWPRIVILEGE" jdbcType="DECIMAL" property="borrowprivilege" />
+		<result column="STUDENTNAME" jdbcType="VARCHAR" property="studentname" />
+		<association property="department" column="departmentid"
+			javaType="DepartmentInfo" resultMap="departmentMap" />
+
+		<association property="profession" column="professionid"
+			javaType="ProfessionInfo" resultMap="professionMap"></association>
+	</resultMap>
+	<!-- 院系信息映射 -->
+	<resultMap type="DepartmentInfo" id="departmentMap">
+		<id property="departmentid" column="departmetnid" />
+		<result column="DEPARTMENTNO" jdbcType="DECIMAL" property="departmentno" />
+		<result column="DEPARTMENTNAME" jdbcType="VARCHAR" property="departmentname" />
+	</resultMap>
+	
+	<!-- 专业信息映射  -->
+	<resultMap type="ProfessionInfo" id="professionMap">
+		<id column="PROFESSIONID" jdbcType="DECIMAL" property="professionid" />
+		<result column="PROFESSIONNO" jdbcType="DECIMAL" property="professionno" />
+		<result column="PROFESSIONNAME" jdbcType="VARCHAR" property="professionname" />
+	</resultMap>

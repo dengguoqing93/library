@@ -1,250 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.library.dao.dgq.StudentInfoMapper">
-  <resultMap id="BaseResultMap" type="com.library.pojo.dgq.StudentInfo">
-    <id column="STUDENTNO" jdbcType="DECIMAL" property="studentno" />
-    <result column="PWD" jdbcType="VARCHAR" property="pwd" />
-    <result column="STUDENTSEX" jdbcType="DECIMAL" property="studentsex" />
-    <result column="GRADE" jdbcType="DECIMAL" property="grade" />
-    <result column="CLASSES" jdbcType="DECIMAL" property="classes" />
-    <result column="STUDENTPHONE" jdbcType="DECIMAL" property="studentphone" />
-    <result column="BORROWQUANTITIES" jdbcType="DECIMAL" property="borrowquantities" />
-    <result column="BORROWEDQUANTITIES" jdbcType="DECIMAL" property="borrowedquantities" />
-    <result column="BORROWPRIVILEGE" jdbcType="DECIMAL" property="borrowprivilege" />
-    <result column="COMM" jdbcType="VARCHAR" property="comm" />
-    <result column="DEF01" jdbcType="VARCHAR" property="def01" />
-    <result column="DEF02" jdbcType="VARCHAR" property="def02" />
-    <result column="DEF03" jdbcType="VARCHAR" property="def03" />
-    <result column="DEF04" jdbcType="VARCHAR" property="def04" />
-    <result column="DEF05" jdbcType="VARCHAR" property="def05" />
-    <result column="STUDENTNAME" jdbcType="VARCHAR" property="studentname" />
-	<association property="department" javaType="DepartmentInfo" column="departmentid" select="selectDepartment" >
-		
-	</association>  
-	<association property="profession" javaType="DepartmentInfo" column="professionid" select="selectProfession"></association>  
-  </resultMap>
-  <sql id="Base_Column_List">
-    STUDENTNO, PWD, STUDENTSEX, GRADE, DEPARTMENTID, CLASSES, STUDENTPHONE, BORROWQUANTITIES, 
-    BORROWEDQUANTITIES, BORROWPRIVILEGE, COMM, DEF01, DEF02, DEF03, DEF04, DEF05, PROFESSIONID, 
-    STUDENTNAME
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from DGQ.STUDENTINFO
-    where STUDENTNO = #{studentno,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from DGQ.STUDENTINFO
-    where STUDENTNO = #{studentno,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="com.library.pojo.dgq.StudentInfo">
-    insert into DGQ.STUDENTINFO (STUDENTNO, PWD, STUDENTSEX, 
-      GRADE, DEPARTMENTID, CLASSES, 
-      STUDENTPHONE, BORROWQUANTITIES, BORROWEDQUANTITIES, 
-      BORROWPRIVILEGE, COMM, DEF01, 
-      DEF02, DEF03, DEF04, 
-      DEF05, PROFESSIONID, STUDENTNAME
-      )
-    values (#{studentno,jdbcType=DECIMAL}, #{pwd,jdbcType=VARCHAR}, #{studentsex,jdbcType=DECIMAL}, 
-      #{grade,jdbcType=DECIMAL}, #{departmentid,jdbcType=DECIMAL}, #{classes,jdbcType=DECIMAL}, 
-      #{studentphone,jdbcType=DECIMAL}, #{borrowquantities,jdbcType=DECIMAL}, #{borrowedquantities,jdbcType=DECIMAL}, 
-      #{borrowprivilege,jdbcType=DECIMAL}, #{comm,jdbcType=VARCHAR}, #{def01,jdbcType=VARCHAR}, 
-      #{def02,jdbcType=VARCHAR}, #{def03,jdbcType=VARCHAR}, #{def04,jdbcType=VARCHAR}, 
-      #{def05,jdbcType=VARCHAR}, #{professionid,jdbcType=DECIMAL}, #{studentname,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.library.pojo.dgq.StudentInfo">
-    insert into DGQ.STUDENTINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="studentno != null">
-        STUDENTNO,
-      </if>
-      <if test="pwd != null">
-        PWD,
-      </if>
-      <if test="studentsex != null">
-        STUDENTSEX,
-      </if>
-      <if test="grade != null">
-        GRADE,
-      </if>
-      <if test="departmentid != null">
-        DEPARTMENTID,
-      </if>
-      <if test="classes != null">
-        CLASSES,
-      </if>
-      <if test="studentphone != null">
-        STUDENTPHONE,
-      </if>
-      <if test="borrowquantities != null">
-        BORROWQUANTITIES,
-      </if>
-      <if test="borrowedquantities != null">
-        BORROWEDQUANTITIES,
-      </if>
-      <if test="borrowprivilege != null">
-        BORROWPRIVILEGE,
-      </if>
-      <if test="comm != null">
-        COMM,
-      </if>
-      <if test="def01 != null">
-        DEF01,
-      </if>
-      <if test="def02 != null">
-        DEF02,
-      </if>
-      <if test="def03 != null">
-        DEF03,
-      </if>
-      <if test="def04 != null">
-        DEF04,
-      </if>
-      <if test="def05 != null">
-        DEF05,
-      </if>
-      <if test="professionid != null">
-        PROFESSIONID,
-      </if>
-      <if test="studentname != null">
-        STUDENTNAME,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="studentno != null">
-        #{studentno,jdbcType=DECIMAL},
-      </if>
-      <if test="pwd != null">
-        #{pwd,jdbcType=VARCHAR},
-      </if>
-      <if test="studentsex != null">
-        #{studentsex,jdbcType=DECIMAL},
-      </if>
-      <if test="grade != null">
-        #{grade,jdbcType=DECIMAL},
-      </if>
-      <if test="departmentid != null">
-        #{departmentid,jdbcType=DECIMAL},
-      </if>
-      <if test="classes != null">
-        #{classes,jdbcType=DECIMAL},
-      </if>
-      <if test="studentphone != null">
-        #{studentphone,jdbcType=DECIMAL},
-      </if>
-      <if test="borrowquantities != null">
-        #{borrowquantities,jdbcType=DECIMAL},
-      </if>
-      <if test="borrowedquantities != null">
-        #{borrowedquantities,jdbcType=DECIMAL},
-      </if>
-      <if test="borrowprivilege != null">
-        #{borrowprivilege,jdbcType=DECIMAL},
-      </if>
-      <if test="comm != null">
-        #{comm,jdbcType=VARCHAR},
-      </if>
-      <if test="def01 != null">
-        #{def01,jdbcType=VARCHAR},
-      </if>
-      <if test="def02 != null">
-        #{def02,jdbcType=VARCHAR},
-      </if>
-      <if test="def03 != null">
-        #{def03,jdbcType=VARCHAR},
-      </if>
-      <if test="def04 != null">
-        #{def04,jdbcType=VARCHAR},
-      </if>
-      <if test="def05 != null">
-        #{def05,jdbcType=VARCHAR},
-      </if>
-      <if test="professionid != null">
-        #{professionid,jdbcType=DECIMAL},
-      </if>
-      <if test="studentname != null">
-        #{studentname,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.library.pojo.dgq.StudentInfo">
-    update DGQ.STUDENTINFO
-    <set>
-      <if test="pwd != null">
-        PWD = #{pwd,jdbcType=VARCHAR},
-      </if>
-      <if test="studentsex != null">
-        STUDENTSEX = #{studentsex,jdbcType=DECIMAL},
-      </if>
-      <if test="grade != null">
-        GRADE = #{grade,jdbcType=DECIMAL},
-      </if>
-      <if test="departmentid != null">
-        DEPARTMENTID = #{departmentid,jdbcType=DECIMAL},
-      </if>
-      <if test="classes != null">
-        CLASSES = #{classes,jdbcType=DECIMAL},
-      </if>
-      <if test="studentphone != null">
-        STUDENTPHONE = #{studentphone,jdbcType=DECIMAL},
-      </if>
-      <if test="borrowquantities != null">
-        BORROWQUANTITIES = #{borrowquantities,jdbcType=DECIMAL},
-      </if>
-      <if test="borrowedquantities != null">
-        BORROWEDQUANTITIES = #{borrowedquantities,jdbcType=DECIMAL},
-      </if>
-      <if test="borrowprivilege != null">
-        BORROWPRIVILEGE = #{borrowprivilege,jdbcType=DECIMAL},
-      </if>
-      <if test="comm != null">
-        COMM = #{comm,jdbcType=VARCHAR},
-      </if>
-      <if test="def01 != null">
-        DEF01 = #{def01,jdbcType=VARCHAR},
-      </if>
-      <if test="def02 != null">
-        DEF02 = #{def02,jdbcType=VARCHAR},
-      </if>
-      <if test="def03 != null">
-        DEF03 = #{def03,jdbcType=VARCHAR},
-      </if>
-      <if test="def04 != null">
-        DEF04 = #{def04,jdbcType=VARCHAR},
-      </if>
-      <if test="def05 != null">
-        DEF05 = #{def05,jdbcType=VARCHAR},
-      </if>
-      <if test="professionid != null">
-        PROFESSIONID = #{professionid,jdbcType=DECIMAL},
-      </if>
-      <if test="studentname != null">
-        STUDENTNAME = #{studentname,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where STUDENTNO = #{studentno,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.library.pojo.dgq.StudentInfo">
-    update DGQ.STUDENTINFO
-    set PWD = #{pwd,jdbcType=VARCHAR},
-      STUDENTSEX = #{studentsex,jdbcType=DECIMAL},
-      GRADE = #{grade,jdbcType=DECIMAL},
-      DEPARTMENTID = #{departmentid,jdbcType=DECIMAL},
-      CLASSES = #{classes,jdbcType=DECIMAL},
-      STUDENTPHONE = #{studentphone,jdbcType=DECIMAL},
-      BORROWQUANTITIES = #{borrowquantities,jdbcType=DECIMAL},
-      BORROWEDQUANTITIES = #{borrowedquantities,jdbcType=DECIMAL},
-      BORROWPRIVILEGE = #{borrowprivilege,jdbcType=DECIMAL},
-      COMM = #{comm,jdbcType=VARCHAR},
-      DEF01 = #{def01,jdbcType=VARCHAR},
-      DEF02 = #{def02,jdbcType=VARCHAR},
-      DEF03 = #{def03,jdbcType=VARCHAR},
-      DEF04 = #{def04,jdbcType=VARCHAR},
-      DEF05 = #{def05,jdbcType=VARCHAR},
-      PROFESSIONID = #{professionid,jdbcType=DECIMAL},
-      STUDENTNAME = #{studentname,jdbcType=VARCHAR}
-    where STUDENTNO = #{studentno,jdbcType=DECIMAL}
-  </update>
+	<resultMap id="BaseResultMap" type="com.library.pojo.dgq.StudentInfo">
+		<id column="STUDENTNO" jdbcType="DECIMAL" property="studentno" />
+		<result column="PWD" jdbcType="VARCHAR" property="pwd" />
+		<result column="STUDENTSEX" jdbcType="DECIMAL" property="studentsex" />
+		<result column="GRADE" jdbcType="DECIMAL" property="grade" />
+		<result column="CLASSES" jdbcType="DECIMAL" property="classes" />
+		<result column="STUDENTPHONE" jdbcType="DECIMAL" property="studentphone" />
+		<result column="BORROWQUANTITIES" jdbcType="DECIMAL" property="borrowquantities" />
+		<result column="BORROWEDQUANTITIES" jdbcType="DECIMAL"
+			property="borrowedquantities" />
+		<result column="BORROWPRIVILEGE" jdbcType="DECIMAL" property="borrowprivilege" />
+		<result column="STUDENTNAME" jdbcType="VARCHAR" property="studentname" />
+		<result column="COMM" jdbcType="VARCHAR" property="comm" />
+		<result column="DEF01" jdbcType="VARCHAR" property="def01" />
+		<result column="DEF02" jdbcType="VARCHAR" property="def02" />
+		<result column="DEF03" jdbcType="VARCHAR" property="def03" />
+		<result column="DEF04" jdbcType="VARCHAR" property="def04" />
+		<result column="DEF05" jdbcType="VARCHAR" property="def05" />
+
+		<association property="department" javaType="DepartmentInfo"
+			column="departmentid" select="selectDepartment">
+
+		</association>
+		<association property="profession" javaType="ProfessionInfo"
+			column="professionid" select="selectProfession"></association>
+	</resultMap>
+	<sql id="Base_Column_List">
+		STUDENTNO, PWD, STUDENTSEX, GRADE, DEPARTMENTID, CLASSES,
+		STUDENTPHONE,
+		BORROWQUANTITIES,
+		BORROWEDQUANTITIES, BORROWPRIVILEGE,
+		COMM, DEF01, DEF02, DEF03, DEF04, DEF05,
+		PROFESSIONID,
+		STUDENTNAME
+	</sql>
+
+
+
+	<!-- 查询院系信息 -->
+	<select id="selectDepartment" resultType="DepartmentInfo"
+		parameterType="long">
+		select * from DEPARTMENTinfo where departmentid =
+		#{departmentid}
+	</select>
+	<!-- 查询专业信息 -->
+	<select id="selectProfession" resultType="ProfessionInfo"
+		parameterType="long">
+		select * from PROFESSIONINFO where professionid =
+		#{professionid}
+	</select>
+	<!-- 通过学生编号查询学生信息 -->
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from DGQ.STUDENTINFO
+		where STUDENTNO = #{studentno,jdbcType=DECIMAL}
+	</select>
+	<!-- 插入学生信息 -->
+	<insert id="insertStudentInfo" useGeneratedKeys="false"
+		keyColumn="departmentid" >
+		INSERT INTO studentinfo 
+		(studentno,studentname,pwd,studentsex,grade,departmentid,professionid,classes,studentphone)
+		values(#{studentno},#{studentname},#{pwd},#{studentsex},#{grade},
+		(select departmentid from departmentinfo where departmentname = #{departmentname}) ,
+		(select professionid from professioninfo where professionname = #{professionname}) ,
+		#{classes},#{studentphone})
+	</insert> 
+
 </mapper>

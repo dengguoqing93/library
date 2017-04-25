@@ -1,37 +1,91 @@
 /**
- * 
+ *
  */
 
-$(function(){
+$(function() {
+
+	$('#submit').linkbutton({
+		iconCls : 'icon-ok'
+	});
+
+	$('#reset').linkbutton({
+		iconCls : 'icon-reload'
+	});
+
+	/*
+	 * 重置
+	 */
+	$("#reset").bind('click', function() {
+		$("#studentInfo").form("clear");
+	});
+	/*
+	 $("#reset").click(function() {
+	 $("#studentInfo").form("reset");
+	 });*/
+
 	/*
 	 * 添加学生信息的时，输入学号，完成时进行验证，并拿取学院信息，专业信息以及班级信息
 	 */
-	/*
-	 * 给easyui的numberbox格式添加blur事件，方法一
-	 */
-	/*
-	$("#studentno").next("span").children().first().blur(function(){
-				alert("hello");
-		});*/
+
 	/*
 	 * 给easyui的numberbox格式添加blur事件，方法二
 	 */
-	$("input",$("#studentno").next("span")).blur(function(){
-           var valid = $("#studentno").numberbox('isValid');
-           if(!valid){
-           	  alert("输入的学号格式不正确");
-           	  return false;
-           }else{
-           		var studentno = $("#studentno").val();
-           		$.ajax({
-				url:'/library/admin/vertifyAdminName',
-				type:'POST',
-				contentType: "application/json", 
-				data: JSON.stringify({ 'studentno': studentno}),
-				success:function(data){
-					$("#msg").text(data);
+	$("input", $("#studentno").next("span")).blur(function() {
+		var valid = $("#studentno").numberbox('isValid');
+		if (!valid) {
+			alert("输入的学号格式不正确");
+			return false;
+		} else {
+			var studentno = $("#studentno").val();
+			$.ajax({
+
+				url : '/library/student/vertifyStudentNo',
+				type : 'POST',
+				contentType : "application/json",
+				data : JSON.stringify({
+					'studentno' : studentno
+				}),
+				success : function(data) {
+					if (data == null) {
+						$("#msg").text("输入的信息有误");
+						return false;
+					} else {
+						var json = eval("(" + data + ")");
+						$("#departmentname").textbox('setValue', json["departmentName"]);
+						$("#professionname").textbox('setText', json["professionName"]);
+						$("#classes").textbox('setValue', json["classno"]);
+					}
+				}
+			});
+		}
+	});
+
+	/*
+	 * 登录事件
+	 */
+
+	$('#submit').bind('click', function() {
+		$("#studentInfo").form('submit', {
+			url : '/library/student/addStudent',
+			onSubmit : function() {
+				if (!$("#studentno").numberbox('isValid')) {
+					alert('输入的学生编号不合理！');
+					return false;
+				};
+				if (!$("#studentname").textbox('isValid')) {
+					alert('输入的学生姓名不合法！');
+					return false;
+				};
+				if (!$("#studentphone").numberbox('isValid')) {
+					alert('输入的手机号有误！');
+					return false;
+				};
+			},
+			success : function(msg) {
+				alert("11111");
 			}
 		});
-           }
+
 	});
+
 });

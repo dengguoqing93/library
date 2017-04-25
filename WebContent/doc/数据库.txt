@@ -1,0 +1,7 @@
+1、从另一个表获取插入值的sql语句：子查询实现，空格会对数据产生影响
+	INSERT INTO studentinfo 
+		(studentno,studentname,pwd,studentsex,grade,departmentid,professionid,classes,studentphone)
+		values(#{studentno},#{studentname},#{pwd},#{studentsex},#{grade},
+		(select departmentid from departmentinfo where departmentname = #{departmentname}) ,
+		(select professionid from professioninfo where professionname = #{professionname}) ,
+		#{classes},#{studentphone})
