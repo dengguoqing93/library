@@ -1,7 +1,3 @@
 {"rows":[
-	{"bookno":1120102,"bookname":"english","author":"smith","borroweddate":"2017-02-15","shouldreturndate":"2017-05-03"},
-	{"bookno":1120102,"bookname":"english","author":"smith","borroweddate":"2017-02-15","shouldreturndate":"2017-05-03"},
-    {"bookno":1120102,"bookname":"english","author":"smith","borroweddate":"2017-02-15","shouldreturndate":"2017-05-03"},
-    {"bookno":1120102,"bookname":"english","author":"smith","borroweddate":"2017-02-15","shouldreturndate":"2017-05-03"},
-    {"bookno":1120102,"bookname":"english","author":"smith","borroweddate":"2017-02-15","shouldreturndate":"2017-05-03"}
+	{"borrowedquantities":0,"departmentname":"经济学院","forfeimoney":0,"grade":0,"professionname":"投资经济管理","studentname":"邓国庆","studentno":1201020105,"studentsex":0}
 ]}

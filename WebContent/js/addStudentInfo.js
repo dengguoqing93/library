@@ -16,6 +16,7 @@ $(function() {
 	 * 重置
 	 */
 	$("#reset").bind('click', function() {
+		$("#msg").text("");
 		$("#studentInfo").form("clear");
 	});
 	/*
@@ -32,13 +33,13 @@ $(function() {
 	 */
 	$("input", $("#studentno").next("span")).blur(function() {
 		var valid = $("#studentno").numberbox('isValid');
+		$("#msg").text("");
 		if (!valid) {
 			alert("输入的学号格式不正确");
 			return false;
 		} else {
 			var studentno = $("#studentno").val();
 			$.ajax({
-				
 				url : '/library/student/vertifyStudentNo',
 				type : 'POST',
 				contentType : "application/json",
@@ -66,8 +67,8 @@ $(function() {
 	$("#student").form({
 			url : '/library/student/addStudent',
 			onSubmit : function() {
-				if (!$("#studentno").numberbox('isValid')) {
-					alert('输入的学生编号不合理！');
+				if (!$("#studentno").numberbox('isValid')&&$("#msg").text("")!=""&&$("#msg").text()!=null) {
+					alert('输入的学生编号有误！');
 					return false;
 				};
 				if (!$("#studentname").textbox('isValid')) {
@@ -80,11 +81,14 @@ $(function() {
 				};
 			},
 			success : function(msg) {
-				
+				window.location.href = '/library/html/mainPage.html';
 			}
 		});
 	$('#submit').bind('click', function() {
-		$("#student").submit();
+		var con = confirm("确认添加吗？");
+		if(con){
+			$("#student").submit();
+		}
 	});
 
 });

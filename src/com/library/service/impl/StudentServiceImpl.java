@@ -1,11 +1,14 @@
 package com.library.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.library.dao.dgq.DepartmentInfoMapper;
 import com.library.dao.dgq.ProfessionInfoMapper;
 import com.library.dao.dgq.StudentInfoMapper;
+import com.library.pojo.dgq.Borrowing;
 import com.library.pojo.dgq.DepartmentInfo;
 import com.library.pojo.dgq.ProfessionInfo;
 import com.library.pojo.dgq.Student;
@@ -45,6 +48,16 @@ public class StudentServiceImpl implements IStudentService {
 		return studentInfoMapper.insertStudentInfo(student);
 	}
 
-	
+	@Override
+	public Student selectByStudentno(long studentno) {
+		// TODO Auto-generated method stub
+		return studentInfoMapper.selectByStudentno(studentno);
+	}
+
+	@Override
+	public List<Borrowing> selectBorrowingByStudentno(long studentno) {
+		// TODO Auto-generated method stub
+		return studentInfoMapper.selectBorrowingByStudentno(studentno);
+	}
 
 }

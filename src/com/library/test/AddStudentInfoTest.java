@@ -36,7 +36,7 @@ public class AddStudentInfoTest {
 		/*StudentInfo studentInfo = studentInfoMapper.selectByPrimaryKey((long)1201020105);
 		System.out.println(studentInfo.getStudentname());*/
 		int insertStudentInfo = studentInfoMapper.insertStudentInfo(student);
-		
+		System.out.println(insertStudentInfo);
 	}
 
 	@Test
@@ -54,4 +54,13 @@ public class AddStudentInfoTest {
 		/*int addStudent = studentInfoAction.addStudent(student);
 		System.out.println(addStudent);*/
 	}
+	/*
+	 * 
+	 */
+	@Test
+	public void selectByStudentnotest() {
+		Student student = studentInfoMapper.selectByStudentno(new Long(1201020107));
+		System.out.println(student);
+	}
+	
 }

@@ -19,10 +19,8 @@
 		<result column="DEF03" jdbcType="VARCHAR" property="def03" />
 		<result column="DEF04" jdbcType="VARCHAR" property="def04" />
 		<result column="DEF05" jdbcType="VARCHAR" property="def05" />
-
 		<association property="department" javaType="DepartmentInfo"
 			column="departmentid" select="selectDepartment">
-
 		</association>
 		<association property="profession" javaType="ProfessionInfo"
 			column="professionid" select="selectProfession"></association>
@@ -69,5 +67,19 @@
 		(select professionid from professioninfo where professionname = #{professionname}) ,
 		#{classes},#{studentphone})
 	</insert> 
-
+	<!-- 查询学生信息，拼接自己写的 -->
+	<select id="selectByStudentno" resultType="Student">
+		select s.studentno  studentno,s.studentname studentname,d.departmentname departmentname,
+       p.professionname professionname,s.BORROWEDQUANTITIES borrowedquantities
+       from studentinfo s inner join  departmentinfo d on s.departmentid = d.departmentid
+       inner join  professioninfo p on s.professionid = p.professionid 
+       where studentno = #{studentno}
+	</select>
+	<!-- 根据学生编号查询借阅信息 -->
+	<select id="selectBorrowingByStudentno" resultType="Borrowing">
+		select bo.bookno bookno,bo.bookname bookname,bo.author author,
+       to_char(br.borroweddate,'yyyy-mm-dd') borroweddate,to_char(br.shouldreturndate,'yyyy-mm-dd') shouldreturndate
+       from borrowinginfo br inner join bookinfo bo on bo.bookid = br.bookid
+       where studentno = #{studentno}
+	</select>
 </mapper>

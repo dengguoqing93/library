@@ -1,6 +1,8 @@
 package com.library.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.library.pojo.dgq.Borrowing;
 import com.library.pojo.dgq.DepartmentInfo;
 import com.library.pojo.dgq.ProfessionInfo;
 import com.library.pojo.dgq.Student;
@@ -71,6 +74,7 @@ public class StudentInfoAction {
 			map.put("msg","输入的学号有误！");
 		}
 		String jsonString = JSON.toJSONString(map);
+		
 		return jsonString;
 		
 	}
@@ -78,7 +82,7 @@ public class StudentInfoAction {
 	/*
 	 *添加学生信息 
 	 */
-	@RequestMapping(value="addStudent",produces="text/html;charset=utf-8",method=RequestMethod.POST)
+	@RequestMapping(value="addStudent")
 	@ResponseBody
 	public String addStudent(Student student) {
 		/**
@@ -99,5 +103,35 @@ public class StudentInfoAction {
 		String pwd = studentno.substring(studentno.length()-6);
 		student.setPwd(pwd);
 		return student;
+	}
+	/*
+	 * 根据输入的学号返回对应的学生信息
+	 */
+	@RequestMapping(value="selectStudent")
+	@ResponseBody
+	public String selectStudent(String studentno) {
+		Student student = studentService.selectByStudentno(Long.parseLong(studentno));
+		Map<String, Object> map = new HashMap<String,Object>();
+		if (student==null) {
+			map.put("msg", "输入的学号不存在");
+		}else{
+			List<Student> list = new ArrayList<Student>();
+			list.add(student);
+			map.put("rows", list);
+		}
+		return JSON.toJSONString(map);
+	}
+	
+	/*
+	 * 根据学号返回该学生的借书信息
+	 */
+	@RequestMapping(value="selectBorrowingByStudentno")
+	@ResponseBody
+	public String selectBorrowingByStudentno(String studentno) {
+		List<Borrowing> borringList = studentService.selectBorrowingByStudentno(Long.parseLong(studentno));
+		Map<String, Object> map = new HashMap<String,Object>();
+		map.put("total", borringList.size());
+		map.put("rows", borringList);
+		return JSON.toJSONString(map);
 	}
 }

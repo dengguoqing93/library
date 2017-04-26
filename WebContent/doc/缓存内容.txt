@@ -59,7 +59,7 @@
 		<result column="PROFESSIONNAME" jdbcType="VARCHAR" property="professionname" />
 	</resultMap>
 	
-<!--  //<label>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label><input  id="professionname" name="professionname">  -->
+		<!--  //<label>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label><input  id="professionname" name="professionname">  -->
 			 <label>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label><input id="professionname" name="professionname">
 			 <!-- 设置专业:
 			 	专业依赖于学号.因此，设置为只读字段
@@ -69,3 +69,170 @@
 					readonly:true
 				});
 			</script>
+			
+3、剪切borrowinginfomapper.xml
+		<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DGQ.BORROWINGINFO
+    where BORROWINGID = #{borrowingid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from DGQ.BORROWINGINFO
+    where BORROWINGID = #{borrowingid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.library.pojo.dgq.BorrowingInfo">
+    insert into DGQ.BORROWINGINFO (BORROWINGID, BOOKID, STUDENTNO, 
+      BORROWEDDATE, SHOULDRETURNDATE, ACTUALRETURNDATE, 
+      OVERDUE, COMM, DEF01, 
+      DEF02, DEF03, DEF04, 
+      DEF05)
+    values (#{borrowingid,jdbcType=DECIMAL}, #{bookid,jdbcType=DECIMAL}, #{studentno,jdbcType=DECIMAL}, 
+      #{borroweddate,jdbcType=TIMESTAMP}, #{shouldreturndate,jdbcType=TIMESTAMP}, #{actualreturndate,jdbcType=TIMESTAMP}, 
+      #{overdue,jdbcType=DECIMAL}, #{comm,jdbcType=VARCHAR}, #{def01,jdbcType=VARCHAR}, 
+      #{def02,jdbcType=VARCHAR}, #{def03,jdbcType=VARCHAR}, #{def04,jdbcType=VARCHAR}, 
+      #{def05,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.library.pojo.dgq.BorrowingInfo">
+    insert into DGQ.BORROWINGINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="borrowingid != null">
+        BORROWINGID,
+      </if>
+      <if test="bookid != null">
+        BOOKID,
+      </if>
+      <if test="studentno != null">
+        STUDENTNO,
+      </if>
+      <if test="borroweddate != null">
+        BORROWEDDATE,
+      </if>
+      <if test="shouldreturndate != null">
+        SHOULDRETURNDATE,
+      </if>
+      <if test="actualreturndate != null">
+        ACTUALRETURNDATE,
+      </if>
+      <if test="overdue != null">
+        OVERDUE,
+      </if>
+      <if test="comm != null">
+        COMM,
+      </if>
+      <if test="def01 != null">
+        DEF01,
+      </if>
+      <if test="def02 != null">
+        DEF02,
+      </if>
+      <if test="def03 != null">
+        DEF03,
+      </if>
+      <if test="def04 != null">
+        DEF04,
+      </if>
+      <if test="def05 != null">
+        DEF05,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="borrowingid != null">
+        #{borrowingid,jdbcType=DECIMAL},
+      </if>
+      <if test="bookid != null">
+        #{bookid,jdbcType=DECIMAL},
+      </if>
+      <if test="studentno != null">
+        #{studentno,jdbcType=DECIMAL},
+      </if>
+      <if test="borroweddate != null">
+        #{borroweddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shouldreturndate != null">
+        #{shouldreturndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actualreturndate != null">
+        #{actualreturndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overdue != null">
+        #{overdue,jdbcType=DECIMAL},
+      </if>
+      <if test="comm != null">
+        #{comm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        #{def05,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.library.pojo.dgq.BorrowingInfo">
+    update DGQ.BORROWINGINFO
+    <set>
+      <if test="bookid != null">
+        BOOKID = #{bookid,jdbcType=DECIMAL},
+      </if>
+      <if test="studentno != null">
+        STUDENTNO = #{studentno,jdbcType=DECIMAL},
+      </if>
+      <if test="borroweddate != null">
+        BORROWEDDATE = #{borroweddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shouldreturndate != null">
+        SHOULDRETURNDATE = #{shouldreturndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actualreturndate != null">
+        ACTUALRETURNDATE = #{actualreturndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overdue != null">
+        OVERDUE = #{overdue,jdbcType=DECIMAL},
+      </if>
+      <if test="comm != null">
+        COMM = #{comm,jdbcType=VARCHAR},
+      </if>
+      <if test="def01 != null">
+        DEF01 = #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        DEF02 = #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        DEF03 = #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        DEF04 = #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        DEF05 = #{def05,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BORROWINGID = #{borrowingid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.library.pojo.dgq.BorrowingInfo">
+    update DGQ.BORROWINGINFO
+    set BOOKID = #{bookid,jdbcType=DECIMAL},
+      STUDENTNO = #{studentno,jdbcType=DECIMAL},
+      BORROWEDDATE = #{borroweddate,jdbcType=TIMESTAMP},
+      SHOULDRETURNDATE = #{shouldreturndate,jdbcType=TIMESTAMP},
+      ACTUALRETURNDATE = #{actualreturndate,jdbcType=TIMESTAMP},
+      OVERDUE = #{overdue,jdbcType=DECIMAL},
+      COMM = #{comm,jdbcType=VARCHAR},
+      DEF01 = #{def01,jdbcType=VARCHAR},
+      DEF02 = #{def02,jdbcType=VARCHAR},
+      DEF03 = #{def03,jdbcType=VARCHAR},
+      DEF04 = #{def04,jdbcType=VARCHAR},
+      DEF05 = #{def05,jdbcType=VARCHAR}
+    where BORROWINGID = #{borrowingid,jdbcType=DECIMAL}
+  </update>

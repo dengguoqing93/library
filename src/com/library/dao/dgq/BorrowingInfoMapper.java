@@ -1,17 +1,9 @@
 package com.library.dao.dgq;
 
-import com.library.pojo.dgq.BorrowingInfo;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface BorrowingInfoMapper {
-    int deleteByPrimaryKey(Long borrowingid);
-
-    int insert(BorrowingInfo record);
-
-    int insertSelective(BorrowingInfo record);
-
-    BorrowingInfo selectByPrimaryKey(Long borrowingid);
-
-    int updateByPrimaryKeySelective(BorrowingInfo record);
-
-    int updateByPrimaryKey(BorrowingInfo record);
+    int	insertBorrowinginfo(@Param("bookid")long bookid,@Param("studentno")long studentno);
 }

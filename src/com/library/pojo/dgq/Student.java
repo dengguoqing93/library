@@ -10,6 +10,8 @@ public class Student {
 	private Long classes;
 	private String departmentname;
 	private String professionname;
+	private double forfeimoney;
+	private Short borrowedquantities;
 	
 	public short getStudentsex() {
 		return studentsex;
@@ -66,12 +68,24 @@ public class Student {
 	public void setProfessionname(String professionname) {
 		this.professionname = professionname;
 	}
+	public double getForfeimoney() {
+		return forfeimoney;
+	}
+	public void setForfeimoney(double forfeimoney) {
+		this.forfeimoney = forfeimoney;
+	}
+	public Short getBorrowedquantities() {
+		return borrowedquantities;
+	}
+	public void setBorrowedquantities(Short borrowedquantities) {
+		this.borrowedquantities = borrowedquantities;
+	}
 	@Override
 	public String toString() {
 		return "Student [studentno=" + studentno + ", studentname=" + studentname + ", studentphone=" + studentphone
 				+ ", studentsex=" + studentsex + ", grade=" + grade + ", pwd=" + pwd + ", classes=" + classes
-				+ ", departmentname=" + departmentname + ", professionname=" + professionname + "]";
+				+ ", departmentname=" + departmentname + ", professionname=" + professionname + ", forfeimoney="
+				+ forfeimoney + ", borrowedquantities=" + borrowedquantities + "]";
 	}
-	
 	
 }
