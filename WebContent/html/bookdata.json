@@ -1,7 +1,0 @@
-{"rows":[
-	{"bookno":1120102,"bookname":"english","author":"smith","borroweddate":"2017-02-15","shouldreturndate":"2017-05-03"},
-	{"bookno":1120102,"bookname":"english","author":"smith","borroweddate":"2017-02-15","shouldreturndate":"2017-05-03"},
-    {"bookno":1120102,"bookname":"english","author":"smith","borroweddate":"2017-02-15","shouldreturndate":"2017-05-03"},
-    {"bookno":1120102,"bookname":"english","author":"smith","borroweddate":"2017-02-15","shouldreturndate":"2017-05-03"},
-    {"bookno":1120102,"bookname":"english","author":"smith","borroweddate":"2017-02-15","shouldreturndate":"2017-05-03"}
-]}

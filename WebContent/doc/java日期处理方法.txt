@@ -1,0 +1,10 @@
+/*
+ * java日期转化为sql日期
+*/
+		/*java.util.Date a = new java.util.Date();
+		java.sql.Date b = new java.sql.Date(a.getTime());
+        System.out.println(b);
+        java.sql.Time c = new java.sql.Time(a.getTime());
+        System.out.println(c);
+        java.sql.Timestamp d=new java.sql.Timestamp(a.getTime());
+        System.out.println(d);*/

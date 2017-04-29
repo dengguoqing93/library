@@ -9,3 +9,32 @@
 		$("#studentno").next("span").children().first().blur(function(){
 				//函数体
 		});
+3、easyui的textbox属性设置值的方法：
+	$("#id").textbox('setValue',value)
+	该方法设置的值可以通过$().val()拿到，并通过表单提交
+	$("#id").textbox('setText',value)
+	该方法设置的值不能通过表单提交
+4、easyui的datagrid设置行的样式（参照loanBook.html以及相应的js）
+		$('#loanTable').datagrid({
+			rowStyler : function(index, row) {
+				if (row.borrowingstatus == 1) {
+					return 'background-color:#C7C5CA;color:red;';
+				}
+			}
+		});
+		
+5、easyui中datagrid删除行数据：
+	easyui每次只能删除一行，而且要根据索引进行删除，并且每次删除之后会重新获取索引，因此在删除多行时要进行循环删除，而且索引号可以一直为0；
+	（参考loanBook.html以及相应的js）
+	function deleteBookRow () {
+  		var rows = $("#loanTable").datagrid('getSelections');
+ 		 for (var i=0; i < rows.length; i++) {
+   		 $("#loanTable").datagrid('deleteRow',0);
+  	};
+  	};
+  
+	
+	
+	
+	
+	

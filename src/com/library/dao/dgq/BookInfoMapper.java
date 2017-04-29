@@ -1,17 +1,17 @@
 package com.library.dao.dgq;
 
+import org.springframework.stereotype.Repository;
+
 import com.library.pojo.dgq.BookInfo;
 
+@Repository
 public interface BookInfoMapper {
-    int deleteByPrimaryKey(Long bookid);
-
-    int insert(BookInfo record);
-
-    int insertSelective(BookInfo record);
-
-    BookInfo selectByPrimaryKey(Long bookid);
-
-    int updateByPrimaryKeySelective(BookInfo record);
-
-    int updateByPrimaryKey(BookInfo record);
+	/*
+	 * 更新图书的借阅状状态
+	 */
+    int updateBookBorrowingStatus(BookInfo bookInfo);
+    /*
+     * 通过图书编号查询图书信息
+     */
+    BookInfo selectBookInfoByBookno(String bookno);
 }

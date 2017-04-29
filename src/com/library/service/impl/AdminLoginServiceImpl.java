@@ -21,6 +21,12 @@ public class AdminLoginServiceImpl implements IAdminLoginService {
         return adminInfoMapper.selectByAdmin(admin);
     }
 
+    @Override
+    public AdminInfo selectByAdminName(String adminName) {
+        
+        return adminInfoMapper.selectByAdminName(adminName);
+    }
+
     public AdminInfoMapper getAdminInfoMapper() {
         return adminInfoMapper;
     }
@@ -28,12 +34,4 @@ public class AdminLoginServiceImpl implements IAdminLoginService {
     public void setAdminInfoMapper(AdminInfoMapper adminInfoMapper) {
         this.adminInfoMapper = adminInfoMapper;
     }
-
-    @Override
-    public AdminInfo selectByAdminName(String adminName) {
-        
-        return adminInfoMapper.selectByAdminName(adminName);
-    }
-
-    
 }

@@ -35,7 +35,6 @@ $(function() {
 		} else {
 			$("#user").form('submit', {
 				url : '/library/admin/loginVertify',
-
 				onSubmit : function() {
 					var yzm = $("#yzm").val() == $("#code").val();
 					if (!yzm) {
@@ -44,7 +43,6 @@ $(function() {
 					};
 				},
 				success : function(msg) {
-					alert(msg);
 					if(msg=="true"){
 						alert("用户名或密码输入错误");
 					}else{

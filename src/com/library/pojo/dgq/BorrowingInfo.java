@@ -5,9 +5,13 @@ import java.util.Date;
 public class BorrowingInfo {
     private Long borrowingid;
 
-    private Long bookid;
-
-    private Long studentno;
+   
+    
+    private StudentInfo student;
+    
+    private BookInfo book;
+    
+   
 
     private Date borroweddate;
 
@@ -36,24 +40,25 @@ public class BorrowingInfo {
     public void setBorrowingid(Long borrowingid) {
         this.borrowingid = borrowingid;
     }
+    
 
-    public Long getBookid() {
-        return bookid;
-    }
+    public StudentInfo getStudent() {
+		return student;
+	}
 
-    public void setBookid(Long bookid) {
-        this.bookid = bookid;
-    }
+	public void setStudent(StudentInfo student) {
+		this.student = student;
+	}
 
-    public Long getStudentno() {
-        return studentno;
-    }
+	public BookInfo getBook() {
+		return book;
+	}
 
-    public void setStudentno(Long studentno) {
-        this.studentno = studentno;
-    }
+	public void setBook(BookInfo book) {
+		this.book = book;
+	}
 
-    public Date getBorroweddate() {
+	public Date getBorroweddate() {
         return borroweddate;
     }
 

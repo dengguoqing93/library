@@ -18,9 +18,9 @@
 				<tr>
 					<th data-options="field:'cx',checkbox:'true'">
 					<th data-options="field:'bookno',width:100,align:'center'">图书编号</th>
-					<th data-options="field:'bookno',width:100,align:'center'">图书名称</th>
-					<th data-options="field:'bookno',width:100,align:'center'">作者</th>
-					<th data-options="field:'bookno',width:100,align:'center'">借阅状态</th>
+					<th data-options="field:'bookname',width:100,align:'center'">图书名称</th>
+					<th data-options="field:'author',width:100,align:'center'">作者</th>
+					<th data-options="field:'borrowingstatus',width:100,align:'center'">借阅状态</th>
 				</tr>
 			</thead>
 		</table>	
@@ -30,17 +30,18 @@
 	<div id="tb" style="padding: 5px;height: auto;">
 		<div style="margin-bottom:5px">
 		<label>图书编号：</label>
-		<input type="text" class="easyui-numberbox" id="bookno"  name="bookno" data-options="prompt:'请输入图书编号'">
-		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" onclick="appendBookRow ()">添加</a>&nbsp;&nbsp;&nbsp;
-		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-remove">刪除</a>&nbsp;&nbsp;&nbsp;
-		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-accept" onclick="borrowInfo()">确认借阅</a>
+		<input type="text" class="easyui-textbox" id="bookno"  name="bookno" data-options="prompt:'请输入图书编号'">
+		<a id="append" href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add">添加</a>&nbsp;&nbsp;&nbsp;
+		<a id="delete" href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-remove">刪除</a>&nbsp;&nbsp;&nbsp;
+		<a id="confirmLoan" href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-accept">确认借阅</a>
 		</div>
 	</div>
 	
 	<div id="studentWin">
 		<div id="studentInfo"style="padding-top: 20px;padding-left:100px; ">
-			<label>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label><input
-				type="text" id="studentno" name="studentno">
+			<label>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label>
+			<input type="text" id="studentno" name="studentno">
+			<span id="msg"></span>
 			<!-- 设置学号的样式 -->
 			<script type="text/javascript">
 				/* 设置学号为数字输入框 */
@@ -54,31 +55,36 @@
 				});
 			</script>
 			<br />
-			<br /> <label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label><input
-				type="text" id="studentname" name="studentname">
-			<!-- 验证输入的姓名非空，且全部是汉字 -->
+			<br /> 
+			<label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+			<input id="studentname" name="studentname">
 			<script type="text/javascript">
 				$("#studentname").textbox({
 					readonly : true
-				});
+				})
 			</script>
 			<br />
-			<br /> <label>已借数量：</label><input readonly="readonly"
-				id="borrewodCount">
+			<br /> <label>已借数量：</label>
+			<input 	id="borrowquantities"  name="borrowquantities">
 			<script type="text/javascript">
-				$("#borrowedCount").numberbox()
+				$("#borrowquantities").textbox({
+					readonly : true
+				});
 			</script>
 			<br>
-			<br> <label>可借数量：</label><input readonly="readonly"
-				id="borrowCount"><br><br>
+			<br> <label>可借数量：</label>
+			<input id="borrowedquantities"  name="borrowedquantities" >
 			<script type="text/javascript">
-				$("#borrowCount").numberbox()
+				$("#borrowedquantities").textbox({
+					readonly : true
+				});
 			</script>
+			<br><br>
 			<!-- 确认借阅事件绑定 -->
-			<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-accept">确认借阅</a>
+			<a id="stuConfirmLoan" href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-accept">确认借阅</a>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<!-- 取消借阅事件绑定 -->
-			<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-cancel">取消借阅</a>
+			<a id="cancelLoan" href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-cancel">取消借阅</a>
 		</div>
 	</div>
 	<!-- 学生信息展示窗口的设置 -->

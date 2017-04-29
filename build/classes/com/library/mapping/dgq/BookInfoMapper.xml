@@ -1,212 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.library.dao.dgq.BookInfoMapper">
-  <resultMap id="BaseResultMap" type="com.library.pojo.dgq.BookInfo">
-    <id column="BOOKID" jdbcType="DECIMAL" property="bookid" />
-    <result column="BOOKNO" jdbcType="VARCHAR" property="bookno" />
-    <result column="BOOKNAME" jdbcType="VARCHAR" property="bookname" />
-    <result column="AUTHOR" jdbcType="VARCHAR" property="author" />
-    <result column="BOOKCATEGORYID" jdbcType="DECIMAL" property="bookcategoryid" />
-    <result column="PUBLISHCOMPANYID" jdbcType="DECIMAL" property="publishcompanyid" />
-    <result column="PUBLICATIONYEAR" jdbcType="DECIMAL" property="publicationyear" />
-    <result column="BORROWINGSTATUS" jdbcType="DECIMAL" property="borrowingstatus" />
-    <result column="COMM" jdbcType="VARCHAR" property="comm" />
-    <result column="DEF01" jdbcType="VARCHAR" property="def01" />
-    <result column="DEF02" jdbcType="VARCHAR" property="def02" />
-    <result column="DEF03" jdbcType="VARCHAR" property="def03" />
-    <result column="DEF04" jdbcType="VARCHAR" property="def04" />
-    <result column="DEF05" jdbcType="VARCHAR" property="def05" />
-    <result column="PRICE" jdbcType="DECIMAL" property="price" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    BOOKID, BOOKNO, BOOKNAME, AUTHOR, BOOKCATEGORYID, PUBLISHCOMPANYID, PUBLICATIONYEAR, 
-    BORROWINGSTATUS, COMM, DEF01, DEF02, DEF03, DEF04, DEF05, PRICE
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from DGQ.BOOKINFO
-    where BOOKID = #{bookid,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from DGQ.BOOKINFO
-    where BOOKID = #{bookid,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="com.library.pojo.dgq.BookInfo">
-    insert into DGQ.BOOKINFO (BOOKID, BOOKNO, BOOKNAME, 
-      AUTHOR, BOOKCATEGORYID, PUBLISHCOMPANYID, 
-      PUBLICATIONYEAR, BORROWINGSTATUS, COMM, 
-      DEF01, DEF02, DEF03, 
-      DEF04, DEF05, PRICE
-      )
-    values (#{bookid,jdbcType=DECIMAL}, #{bookno,jdbcType=VARCHAR}, #{bookname,jdbcType=VARCHAR}, 
-      #{author,jdbcType=VARCHAR}, #{bookcategoryid,jdbcType=DECIMAL}, #{publishcompanyid,jdbcType=DECIMAL}, 
-      #{publicationyear,jdbcType=DECIMAL}, #{borrowingstatus,jdbcType=DECIMAL}, #{comm,jdbcType=VARCHAR}, 
-      #{def01,jdbcType=VARCHAR}, #{def02,jdbcType=VARCHAR}, #{def03,jdbcType=VARCHAR}, 
-      #{def04,jdbcType=VARCHAR}, #{def05,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.library.pojo.dgq.BookInfo">
-    insert into DGQ.BOOKINFO
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="bookid != null">
-        BOOKID,
-      </if>
-      <if test="bookno != null">
-        BOOKNO,
-      </if>
-      <if test="bookname != null">
-        BOOKNAME,
-      </if>
-      <if test="author != null">
-        AUTHOR,
-      </if>
-      <if test="bookcategoryid != null">
-        BOOKCATEGORYID,
-      </if>
-      <if test="publishcompanyid != null">
-        PUBLISHCOMPANYID,
-      </if>
-      <if test="publicationyear != null">
-        PUBLICATIONYEAR,
-      </if>
-      <if test="borrowingstatus != null">
-        BORROWINGSTATUS,
-      </if>
-      <if test="comm != null">
-        COMM,
-      </if>
-      <if test="def01 != null">
-        DEF01,
-      </if>
-      <if test="def02 != null">
-        DEF02,
-      </if>
-      <if test="def03 != null">
-        DEF03,
-      </if>
-      <if test="def04 != null">
-        DEF04,
-      </if>
-      <if test="def05 != null">
-        DEF05,
-      </if>
-      <if test="price != null">
-        PRICE,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="bookid != null">
-        #{bookid,jdbcType=DECIMAL},
-      </if>
-      <if test="bookno != null">
-        #{bookno,jdbcType=VARCHAR},
-      </if>
-      <if test="bookname != null">
-        #{bookname,jdbcType=VARCHAR},
-      </if>
-      <if test="author != null">
-        #{author,jdbcType=VARCHAR},
-      </if>
-      <if test="bookcategoryid != null">
-        #{bookcategoryid,jdbcType=DECIMAL},
-      </if>
-      <if test="publishcompanyid != null">
-        #{publishcompanyid,jdbcType=DECIMAL},
-      </if>
-      <if test="publicationyear != null">
-        #{publicationyear,jdbcType=DECIMAL},
-      </if>
-      <if test="borrowingstatus != null">
-        #{borrowingstatus,jdbcType=DECIMAL},
-      </if>
-      <if test="comm != null">
-        #{comm,jdbcType=VARCHAR},
-      </if>
-      <if test="def01 != null">
-        #{def01,jdbcType=VARCHAR},
-      </if>
-      <if test="def02 != null">
-        #{def02,jdbcType=VARCHAR},
-      </if>
-      <if test="def03 != null">
-        #{def03,jdbcType=VARCHAR},
-      </if>
-      <if test="def04 != null">
-        #{def04,jdbcType=VARCHAR},
-      </if>
-      <if test="def05 != null">
-        #{def05,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null">
-        #{price,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.library.pojo.dgq.BookInfo">
-    update DGQ.BOOKINFO
-    <set>
-      <if test="bookno != null">
-        BOOKNO = #{bookno,jdbcType=VARCHAR},
-      </if>
-      <if test="bookname != null">
-        BOOKNAME = #{bookname,jdbcType=VARCHAR},
-      </if>
-      <if test="author != null">
-        AUTHOR = #{author,jdbcType=VARCHAR},
-      </if>
-      <if test="bookcategoryid != null">
-        BOOKCATEGORYID = #{bookcategoryid,jdbcType=DECIMAL},
-      </if>
-      <if test="publishcompanyid != null">
-        PUBLISHCOMPANYID = #{publishcompanyid,jdbcType=DECIMAL},
-      </if>
-      <if test="publicationyear != null">
-        PUBLICATIONYEAR = #{publicationyear,jdbcType=DECIMAL},
-      </if>
-      <if test="borrowingstatus != null">
-        BORROWINGSTATUS = #{borrowingstatus,jdbcType=DECIMAL},
-      </if>
-      <if test="comm != null">
-        COMM = #{comm,jdbcType=VARCHAR},
-      </if>
-      <if test="def01 != null">
-        DEF01 = #{def01,jdbcType=VARCHAR},
-      </if>
-      <if test="def02 != null">
-        DEF02 = #{def02,jdbcType=VARCHAR},
-      </if>
-      <if test="def03 != null">
-        DEF03 = #{def03,jdbcType=VARCHAR},
-      </if>
-      <if test="def04 != null">
-        DEF04 = #{def04,jdbcType=VARCHAR},
-      </if>
-      <if test="def05 != null">
-        DEF05 = #{def05,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null">
-        PRICE = #{price,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where BOOKID = #{bookid,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.library.pojo.dgq.BookInfo">
-    update DGQ.BOOKINFO
-    set BOOKNO = #{bookno,jdbcType=VARCHAR},
-      BOOKNAME = #{bookname,jdbcType=VARCHAR},
-      AUTHOR = #{author,jdbcType=VARCHAR},
-      BOOKCATEGORYID = #{bookcategoryid,jdbcType=DECIMAL},
-      PUBLISHCOMPANYID = #{publishcompanyid,jdbcType=DECIMAL},
-      PUBLICATIONYEAR = #{publicationyear,jdbcType=DECIMAL},
-      BORROWINGSTATUS = #{borrowingstatus,jdbcType=DECIMAL},
-      COMM = #{comm,jdbcType=VARCHAR},
-      DEF01 = #{def01,jdbcType=VARCHAR},
-      DEF02 = #{def02,jdbcType=VARCHAR},
-      DEF03 = #{def03,jdbcType=VARCHAR},
-      DEF04 = #{def04,jdbcType=VARCHAR},
-      DEF05 = #{def05,jdbcType=VARCHAR},
-      PRICE = #{price,jdbcType=DECIMAL}
-    where BOOKID = #{bookid,jdbcType=DECIMAL}
-  </update>
+	<resultMap id="BaseResultMap" type="com.library.pojo.dgq.BookInfo">
+		<id column="BOOKID" jdbcType="DECIMAL" property="bookid" />
+		<result column="BOOKNO" jdbcType="VARCHAR" property="bookno" />
+		<result column="BOOKNAME" jdbcType="VARCHAR" property="bookname" />
+		<result column="AUTHOR" jdbcType="VARCHAR" property="author" />
+		<result column="BOOKCATEGORYID" jdbcType="DECIMAL" property="bookcategoryid" />
+		<result column="PUBLISHCOMPANYID" jdbcType="DECIMAL" property="publishcompanyid" />
+		<result column="PUBLICATIONYEAR" jdbcType="DECIMAL" property="publicationyear" />
+		<result column="BORROWINGSTATUS" jdbcType="DECIMAL" property="borrowingstatus" />
+		<result column="COMM" jdbcType="VARCHAR" property="comm" />
+		<result column="DEF01" jdbcType="VARCHAR" property="def01" />
+		<result column="DEF02" jdbcType="VARCHAR" property="def02" />
+		<result column="DEF03" jdbcType="VARCHAR" property="def03" />
+		<result column="DEF04" jdbcType="VARCHAR" property="def04" />
+		<result column="DEF05" jdbcType="VARCHAR" property="def05" />
+		<result column="PRICE" jdbcType="DECIMAL" property="price" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		BOOKID, BOOKNO, BOOKNAME, AUTHOR, BOOKCATEGORYID, PUBLISHCOMPANYID,
+		PUBLICATIONYEAR,
+		BORROWINGSTATUS, COMM, DEF01, DEF02, DEF03, DEF04, DEF05, PRICE
+	</sql>
+	<!-- 更新图书的借阅信息 -->
+	<update id="updateBookBorrowingStatus">
+		update bookinfo
+		<set>
+			<if test="borrowingstatus == 0">
+				borrowingstatus = 1
+			</if>
+			<if test="borrowingstatus==1">
+				borrowingstatus = 0
+			</if>
+		</set>
+		where bookno = #{bookno}
+	</update>
+
+	<!-- 通过图书编号查询图书信息 -->
+	<select id="selectBookInfoByBookno" resultType="BookInfo">
+		select * from bookinfo where bookno = #{bookno}
+	</select>
 </mapper>

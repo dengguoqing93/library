@@ -1,0 +1,29 @@
+当mybatis传递非对象参数时，有以下三种方法（以borringinfomapper为例）：
+	方法一：
+		dao层的方法：
+		  int	insertBorrowinginfo(long bookid,long studentno);
+		xml配置文件语句：
+			<insert id="insertBorrowinginfo"  useGeneratedKeys="false">
+  				<selectKey keyProperty="borrowingid" resultType="long" order="BEFORE">
+  					select BORROWINGINFO_SEQ.nextval borrowingid from dual
+  				</selectKey>
+  				insert into borrowinginfo
+  				(borrowingid,bookid,studentno) 
+  				values 
+  				(#{borrowingid},#{0},#{1})
+  			</insert>
+  	方法二：
+  		dao层的方法：
+  			  int	insertBorrowinginfo(@Param("bookid")long bookid,@Param("studentno")long studentno);
+  		xml配置文件语句：
+  			<insert id="insertBorrowinginfo"  useGeneratedKeys="false">
+  				<selectKey keyProperty="borrowingid" resultType="long" order="BEFORE">
+  				select BORROWINGINFO_SEQ.nextval borrowingid from dual
+  				</selectKey>
+  				insert into borrowinginfo
+  				(borrowingid,bookid,studentno) 
+  				values 
+  				(#{borrowingid},#{bookid},#{studentno})
+  			</insert>
+  			
+	方法三：利用map传递：即将需要传递的值以xml文件中的动态参数名字为键，以要传递的值为值存放在要传递的map中

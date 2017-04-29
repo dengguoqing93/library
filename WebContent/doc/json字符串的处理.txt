@@ -37,3 +37,22 @@
 			或者：
 		3、将json字符串转化成map的方法
 			（1）、Map<String, List<Person>> parseObject = JSON.parseObject(jsonMap, new TypeReference<Map<String, List<Person>>>(){})
+3、js中解析json字符串
+	var json = eval('('+data+')')
+	取值：
+	json['propety']		
+	
+4、Json对象与Json字符串互转(3种转换方式)
+	4.1 jQuery插件支持的转换方式：$.parseJSON( jsonstr ); //jQuery.parseJSON(jsonstr),可以将json字符串转换成json对象 
+	4.2 浏览器支持的转换方式：JSON.parse(jsonstr); //可以将json字符串转换成json对象
+					  JSON.stringify(jsonobj); //可以将json对象转换成json对符串 
+	4.3：Javascript支持的转换方式： eval('(' + jsonstr + ')'); //可以将json字符串转换成json对象,注意需要在json字符外包裹一对小括号
+							   注：ie8(兼容模式),ie7和ie6也可以使用eval()将字符串转为JSON对象，但不推荐这些方式，这种方式不安全eval会执行json串中的表达式。 
+5、一个复杂的json对象的转化（取自BorringInfoAction）
+		其中jsonObject是一个复杂的json对象：包含一个studentinfo对象和一个bookinfo的数组对象
+		JSONObject fromObject = JSONObject.fromObject(jsonObject.get("studentinfo"));
+		StudentInfo studentinfo = (StudentInfo) JSONObject.toBean(fromObject,StudentInfo.class);
+		JSONArray fromObject2 = JSONArray.fromObject(jsonObject.get("books"));
+		BookInfo[] array = (BookInfo []) JSONArray.toArray(fromObject2,BookInfo.class);
+		List<BookInfo> bookList = Arrays.asList(array);
+	

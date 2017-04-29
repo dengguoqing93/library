@@ -1,17 +1,13 @@
 package com.library.dao.dgq;
 
+import org.springframework.stereotype.Repository;
+
 import com.library.pojo.dgq.ProfessionInfo;
 
+@Repository
 public interface ProfessionInfoMapper {
-    int deleteByPrimaryKey(Long professionid);
-
-    int insert(ProfessionInfo record);
-
-    int insertSelective(ProfessionInfo record);
-
-    ProfessionInfo selectByPrimaryKey(Long professionid);
-
-    int updateByPrimaryKeySelective(ProfessionInfo record);
-
-    int updateByPrimaryKey(ProfessionInfo record);
+	/*
+	 * 通过专业编号和院系id查询专业编号
+	 */
+    ProfessionInfo selectByProfessionno(long professionno,short departmentid);
 }
