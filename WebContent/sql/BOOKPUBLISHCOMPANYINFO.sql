@@ -1,5 +1,8 @@
 -- Create table
-create table BOOKPUBLISHCOMPANYINFO
+/*
+ * orcleè¯­å¥
+ *
+ create table BOOKPUBLISHCOMPANYINFO
 (
   PUBLISHCOMPANYID   NUMBER(10) not null,
   PUBLISHCOMPANYABBR VARCHAR2(4) not null,
@@ -24,23 +27,23 @@ tablespace USERS
   );
 -- Add comments to the columns 
 comment on column BOOKPUBLISHCOMPANYINFO.PUBLISHCOMPANYID
-  is '³ö°æÉç±àºÅ';
+  is 'å‡ºç‰ˆç¤¾ç¼–å·';
 comment on column BOOKPUBLISHCOMPANYINFO.PUBLISHCOMPANYABBR
-  is '³ö°æÉçËõĞ´';
+  is 'å‡ºç‰ˆç¤¾ç¼©å†™';
 comment on column BOOKPUBLISHCOMPANYINFO.PUBLISHCOMPANYNAME
-  is '³ö°æÉçÃû×Ö';
+  is 'å‡ºç‰ˆç¤¾åå­—';
 comment on column BOOKPUBLISHCOMPANYINFO.PUBLISHCOMPANYCOMM
-  is '±¸×¢ĞÅÏ¢';
+  is 'å¤‡æ³¨ä¿¡æ¯';
 comment on column BOOKPUBLISHCOMPANYINFO.DEF01
-  is 'Ô¤Áô×Ö¶Î';
+  is 'é¢„ç•™å­—æ®µ';
 comment on column BOOKPUBLISHCOMPANYINFO.DEF02
-  is 'Ô¤Áô×Ö¶Î';
+  is 'é¢„ç•™å­—æ®µ';
 comment on column BOOKPUBLISHCOMPANYINFO.DEF03
-  is 'Ô¤Áô×Ö¶Î';
+  is 'é¢„ç•™å­—æ®µ';
 comment on column BOOKPUBLISHCOMPANYINFO.DEF04
-  is 'Ô¤Áô×Ö¶Î';
+  is 'é¢„ç•™å­—æ®µ';
 comment on column BOOKPUBLISHCOMPANYINFO.DEF05
-  is 'Ô¤Áô×Ö¶Î';
+  is 'é¢„ç•™å­—æ®µ';
 -- Create/Recreate primary, unique and foreign key constraints 
 alter table BOOKPUBLISHCOMPANYINFO
   add constraint COMPANYPUBLISH_KEY primary key (PUBLISHCOMPANYID)
@@ -84,3 +87,17 @@ alter table BOOKPUBLISHCOMPANYINFO
     minextents 1
     maxextents unlimited
   );
+*/
+--Mysql
+	CREATE TABLE `library`.`bookpublishcompanyinfo` (
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `ABBR` VARCHAR(4) NOT NULL COMMENT 'å‡ºç‰ˆç¤¾ç¼©å†™',
+  `NAME` VARCHAR(45) NOT NULL COMMENT 'å‡ºç‰ˆç¤¾åå­—',
+  `COMM` VARCHAR(45) NULL COMMENT 'å¤‡æ³¨ä¿¡æ¯',
+  `DEF01` VARCHAR(45) NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF02` VARCHAR(45) NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF03` VARCHAR(45) NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF04` VARCHAR(45) NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF05` VARCHAR(45) NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  PRIMARY KEY (`ID`))
+COMMENT = 'å‡ºç‰ˆç¤¾ä¿¡æ¯';

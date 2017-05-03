@@ -1,5 +1,5 @@
 -- Create table
-create table PROFESSIONINFO
+/*create table PROFESSIONINFO
 (
   PROFESSIONID   NUMBER(10) not null,
   PROFESSIONNO   NUMBER(10) not null,
@@ -25,25 +25,25 @@ tablespace USERS
   );
 -- Add comments to the columns 
 comment on column PROFESSIONINFO.PROFESSIONID
-  is 'רҵID';
+  is '专业ID';
 comment on column PROFESSIONINFO.PROFESSIONNO
-  is 'רҵ���';
+  is '专业编号';
 comment on column PROFESSIONINFO.PROFESSIONNAME
-  is 'רҵ����';
+  is '专业名称';
 comment on column PROFESSIONINFO.DEPARTMENTID
-  is 'ԺϵID';
+  is '院系ID';
 comment on column PROFESSIONINFO.PROFESSIONCOMM
-  is '��ע��Ϣ';
+  is '备注信息';
 comment on column PROFESSIONINFO.DEF01
-  is 'Ԥ���ֶ�';
+  is '预留字段';
 comment on column PROFESSIONINFO.DEF02
-  is 'Ԥ���ֶ�';
+  is '预留字段';
 comment on column PROFESSIONINFO.DEF03
-  is 'Ԥ���ֶ�';
+  is '预留字段';
 comment on column PROFESSIONINFO.DEF04
-  is 'Ԥ���ֶ�';
+  is '预留字段';
 comment on column PROFESSIONINFO.DEF05
-  is 'Ԥ���ֶ�';
+  is '预留字段';
 -- Create/Recreate primary, unique and foreign key constraints 
 alter table PROFESSIONINFO
   add constraint PROFESSIONKEY primary key (PROFESSIONID)
@@ -62,3 +62,20 @@ alter table PROFESSIONINFO
 alter table PROFESSIONINFO
   add constraint PROF_DEPT_DEPTID_FK foreign key (DEPARTMENTID)
   references DEPARTMENTINFO (DEPARTMENTID) on delete cascade;
+  */
+--mysql创建语句
+  CREATE TABLE `professioninfo` (
+  `PROFESSIONID` int(11) NOT NULL AUTO_INCREMENT,
+  `PROFESSIONNO` int(11) NOT NULL COMMENT '专业编号',
+  `PROFESSIONNAME` varchar(45) NOT NULL COMMENT '专业名字',
+  `DEPARTMENTID` int(11) NOT NULL COMMENT '部门ID',
+  `PROFESSIONCOMM` varchar(45) DEFAULT NULL COMMENT '备注信息',
+  `DEF01` varchar(45) DEFAULT NULL COMMENT '预留字段',
+  `DEF02` varchar(45) DEFAULT NULL COMMENT '预留字段',
+  `DEF03` varchar(45) DEFAULT NULL COMMENT '预留字段',
+  `DEF04` varchar(45) DEFAULT NULL COMMENT '预留字段',
+  `DEF05` varchar(45) DEFAULT NULL COMMENT '预留字段',
+  PRIMARY KEY (`PROFESSIONID`),
+  KEY `fk_departmentid_prof_idx` (`DEPARTMENTID`),
+  CONSTRAINT `fk_departmentid_prof` FOREIGN KEY (`DEPARTMENTID`) REFERENCES `departmentinfo` (`DEPARTMENTID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='专业信息表';

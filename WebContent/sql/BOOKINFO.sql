@@ -1,4 +1,5 @@
 -- Create table
+/*
 create table BOOKINFO
 (
   BOOKID           NUMBER(10) not null,
@@ -30,38 +31,38 @@ tablespace USERS
   );
 -- Add comments to the table 
 comment on table BOOKINFO
-  is 'Í¼ÊéĞÅÏ¢±í';
+  is 'å›¾ä¹¦ä¿¡æ¯è¡¨';
 -- Add comments to the columns 
 comment on column BOOKINFO.BOOKID
-  is 'Í¼ÊéID';
+  is 'å›¾ä¹¦ID';
 comment on column BOOKINFO.BOOKNO
-  is 'Í¼Êé±àºÅ';
+  is 'å›¾ä¹¦ç¼–å·';
 comment on column BOOKINFO.BOOKNAME
-  is 'Í¼ÊéÃû×Ö';
+  is 'å›¾ä¹¦åå­—';
 comment on column BOOKINFO.AUTHOR
-  is 'Í¼Êé×÷Õß';
+  is 'å›¾ä¹¦ä½œè€…';
 comment on column BOOKINFO.BOOKCATEGORYID
-  is 'Í¼ÊéÀà±ğID';
+  is 'å›¾ä¹¦ç±»åˆ«ID';
 comment on column BOOKINFO.PUBLISHCOMPANYID
-  is 'Í¼Êé³ö°æÉçID';
+  is 'å›¾ä¹¦å‡ºç‰ˆç¤¾ID';
 comment on column BOOKINFO.PUBLICATIONYEAR
-  is '³ö°æÄê·İ';
+  is 'å‡ºç‰ˆå¹´ä»½';
 comment on column BOOKINFO.BORROWINGSTATUS
-  is '½èÔÄ×´Ì¬£¨0£¬1±íÊ¾¡£0±íÊ¾Î´½è³ö£¬1±íÊ¾ÒÑ½è³ö£©';
+  is 'å€Ÿé˜…çŠ¶æ€ï¼ˆ0ï¼Œ1è¡¨ç¤ºã€‚0è¡¨ç¤ºæœªå€Ÿå‡ºï¼Œ1è¡¨ç¤ºå·²å€Ÿå‡ºï¼‰';
 comment on column BOOKINFO.COMM
-  is '±¸×¢ĞÅÏ¢';
+  is 'å¤‡æ³¨ä¿¡æ¯';
 comment on column BOOKINFO.DEF01
-  is 'Ô¤Áô×Ö¶Î';
+  is 'é¢„ç•™å­—æ®µ';
 comment on column BOOKINFO.DEF02
-  is 'Ô¤Áô×Ö¶Î';
+  is 'é¢„ç•™å­—æ®µ';
 comment on column BOOKINFO.DEF03
-  is 'Ô¤Áô×Ö¶Î';
+  is 'é¢„ç•™å­—æ®µ';
 comment on column BOOKINFO.DEF04
-  is 'Ô¤Áô×Ö¶Î';
+  is 'é¢„ç•™å­—æ®µ';
 comment on column BOOKINFO.DEF05
-  is 'Ô¤Áô×Ö¶Î';
+  is 'é¢„ç•™å­—æ®µ';
 comment on column BOOKINFO.PRICE
-  is '¼Û¸ñ';
+  is 'ä»·æ ¼';
 -- Create/Recreate primary, unique and foreign key constraints 
 alter table BOOKINFO
   add constraint PRIKEY primary key (BOOKID)
@@ -97,3 +98,28 @@ alter table BOOKINFO
 alter table BOOKINFO
   add constraint BOOKINFO_PBCINFO_PBCID_FK foreign key (PUBLISHCOMPANYID)
   references BOOKPUBLISHCOMPANYINFO (PUBLISHCOMPANYID) on delete cascade;
+*/
+--mysql åˆ›å»ºè¯­å¥
+CREATE TABLE `bookinfo` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `BOOKCATEGORYID` int(11) NOT NULL COMMENT 'å›¾ä¹¦ç±»åˆ«ID',
+  `PUBLISHCOMPANYID` int(11) NOT NULL,
+  `BOOKNO` varchar(45) NOT NULL COMMENT 'å›¾ä¹¦ç¼–å·',
+  `BOOKNAME` varchar(45) NOT NULL COMMENT 'ä¹¦å',
+  `AUTHOR` varchar(45) NOT NULL COMMENT 'ä½œè€…',
+  `PUBLICATIONYEAR` varchar(45) NOT NULL COMMENT 'å‡ºç‰ˆå¹´ä»½',
+  `BORROWINGSTATUS` int(11) NOT NULL DEFAULT '0' COMMENT 'å€Ÿé˜…çŠ¶æ€ï¼ˆ0ï¼Œ1è¡¨ç¤ºã€‚0è¡¨ç¤ºæœªå€Ÿå‡ºï¼Œ1è¡¨ç¤ºå·²å€Ÿå‡ºï¼‰',
+  `PRICE` varchar(45) NOT NULL COMMENT 'ä»·æ ¼\n',
+  `COMM` varchar(45) DEFAULT NULL COMMENT 'å¤‡æ³¨ä¿¡æ¯',
+  `DEF01` varchar(45) DEFAULT NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF02` varchar(45) DEFAULT NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF03` varchar(45) DEFAULT NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEE04` varchar(45) DEFAULT NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF05` varchar(45) DEFAULT NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  PRIMARY KEY (`ID`),
+  KEY `fk_category_book_idx` (`BOOKCATEGORYID`),
+  KEY `fk_book_category_idx` (`BOOKCATEGORYID`),
+  KEY `fk_book_company_idx` (`PUBLISHCOMPANYID`),
+  CONSTRAINT `fk_book_category` FOREIGN KEY (`BOOKCATEGORYID`) REFERENCES `bookcategoryinfo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_book_company` FOREIGN KEY (`PUBLISHCOMPANYID`) REFERENCES `bookpublishcompanyinfo` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='å›¾ä¹¦ä¿¡æ¯è¡¨';

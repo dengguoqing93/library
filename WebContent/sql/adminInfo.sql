@@ -1,5 +1,7 @@
 -- Create table
-create table ADMININFO
+/**
+ * orcleç”Ÿæˆè¯­å¥
+ create table ADMININFO
 (
   ADMINID    NUMBER(10) not null,
   USERNAME   VARCHAR2(15) not null,
@@ -27,32 +29,32 @@ tablespace USERS
   );
 -- Add comments to the table 
 comment on table ADMININFO
-  is '¹ÜÀíÔ±ĞÅÏ¢±í';
+  is 'ç®¡ç†å‘˜ä¿¡æ¯è¡¨';
 -- Add comments to the columns 
 comment on column ADMININFO.ADMINID
-  is '¹ÜÀíÔ±±àºÅ';
+  is 'ç®¡ç†å‘˜ç¼–å·';
 comment on column ADMININFO.USERNAME
-  is 'µÇÂ¼ÓÃ»§Ãû';
+  is 'ç™»å½•ç”¨æˆ·å';
 comment on column ADMININFO.PWD
-  is 'µÇÂ¼ÃÜÂë';
+  is 'ç™»å½•å¯†ç ';
 comment on column ADMININFO.ADMINNAME
-  is '¹ÜÀíÔ±ĞÕÃû';
+  is 'ç®¡ç†å‘˜å§“å';
 comment on column ADMININFO.ADMINSEX
-  is '¹ÜÀíÔ±ĞÔ±ğ£¨È¡Öµ0»ò1±íÊ¾£¬0±íÊ¾ÄĞ£¬1±íÊ¾Å®£©';
+  is 'ç®¡ç†å‘˜æ€§åˆ«ï¼ˆå–å€¼0æˆ–1è¡¨ç¤ºï¼Œ0è¡¨ç¤ºç”·ï¼Œ1è¡¨ç¤ºå¥³ï¼‰';
 comment on column ADMININFO.ADMINPHONE
-  is '¹ÜÀíÔ±µç»°';
+  is 'ç®¡ç†å‘˜ç”µè¯';
 comment on column ADMININFO.COMM
-  is '±¸×¢ĞÅÏ¢';
+  is 'å¤‡æ³¨ä¿¡æ¯';
 comment on column ADMININFO.DEF01
-  is 'Ô¤Áô×Ö¶ÎÒ»';
+  is 'é¢„ç•™å­—æ®µä¸€';
 comment on column ADMININFO.DEF02
-  is 'Ô¤Áô×Ö¶Î¶ş';
+  is 'é¢„ç•™å­—æ®µäºŒ';
 comment on column ADMININFO.DEF03
-  is 'Ô¤Áô×Ö¶ÎÈı';
+  is 'é¢„ç•™å­—æ®µä¸‰';
 comment on column ADMININFO.DEF04
-  is 'Ô¤Áô×Ö¶ÎËÄ';
+  is 'é¢„ç•™å­—æ®µå››';
 comment on column ADMININFO.DEF05
-  is 'Ô¤Áô×Ö¶ÎÎå';
+  is 'é¢„ç•™å­—æ®µäº”';
 -- Create/Recreate primary, unique and foreign key constraints 
 alter table ADMININFO
   add constraint PRIMARYKEY primary key (ADMINID)
@@ -81,4 +83,22 @@ alter table ADMININFO
     next 1M
     minextents 1
     maxextents unlimited
-  );
+  );*/
+--mysqlç”Ÿæˆè¯­å¥
+CREATE TABLE `admininfo` (
+  `ADMINID` bigint(15) NOT NULL AUTO_INCREMENT COMMENT 'ç®¡ç†å‘˜Id',
+  `USERNAME` varchar(45) NOT NULL COMMENT 'ç®¡ç†å‘˜ç™»å½•ç”¨æˆ·å',
+  `PWD` varchar(45) NOT NULL COMMENT 'ç™»å½•å¯†ç ',
+  `NAME` varchar(45) NOT NULL COMMENT 'åå­—',
+  `SEX` int(1) NOT NULL COMMENT 'æ€§åˆ«',
+  `PHONE` mediumint(11) NOT NULL COMMENT 'ç”µè¯',
+  `COMM` varchar(45) DEFAULT NULL COMMENT 'å¤‡æ³¨',
+  `DEF01` varchar(45) DEFAULT NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF02` varchar(45) DEFAULT NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF03` varchar(45) DEFAULT NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF04` varchar(45) DEFAULT NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  `DEF05` varchar(45) DEFAULT NULL COMMENT 'é¢„ç•™å­—æ®µ',
+  PRIMARY KEY (`ADMINID`),
+  UNIQUE KEY `USERNAME_UNIQUE` (`USERNAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ç®¡ç†å‘˜ä¿¡æ¯è¡¨';
+
